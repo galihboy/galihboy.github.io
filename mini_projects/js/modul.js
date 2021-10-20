@@ -113,7 +113,7 @@ function OlahNamaAcak() {
 	strFormat = $("#inputFormatNama").val();
 	strJmlNama = $('#jumlahNama').find(":selected").text();
 
-	if ($("#pilNamaIslami").is(":checked")){
+	if ($("#pilNamaNabi").is(":checked")){
 		lstSumber.push("1")
 	}
 	if ($("#pilNamaSahabat").is(":checked")){
