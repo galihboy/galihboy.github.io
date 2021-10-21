@@ -215,7 +215,7 @@
 											</div>
 										</div>
 										<strong><u>Demo.</u></strong> <br /><br />
-										<form class="form-inline">
+										<form class="form-inline" id="formNamaAcak">
 											<div class="form-group mb-2">
 												<input type="text" class="form-control" id="inputFormatNama" placeholder="Format nama">
 											</div>
@@ -233,9 +233,13 @@
 													<option value="9">9</option>
 													<option value="10">10</option>
 												</select>
+											</div>				
+											<div class="btn-group btn-group-justified" role="group">
+												<input type="button" class="btn btn-info" id="btnBuatNama" value="Buat nama" onclick="PilihModul(5)" />
+												<input type="button" class="btn btn-warning" id="btnReset" value="Reset" onclick="$('#formNamaAcak')[0].reset();$('input[type=checkbox]').prop('checked',false);$('#outputDaftarNama').val('');" />
 											</div>
-											<input type="button" class="btn btn-info" id="btnBuatNama" value="Buat nama" onclick="PilihModul(5)" />
 										</form>
+
 										<hr style="width: 350px; border-top: 2px dashed #095484; margin: 10px 0" />
 										<span>Daftar sumber nama.</span>
 										<div class="form-group mb-2">
