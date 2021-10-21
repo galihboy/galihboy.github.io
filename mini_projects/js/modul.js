@@ -5,9 +5,6 @@ var strURL;
 var idApi;
 var kodeModul;
 
-//
-
-
 jQuery.get('data.json', function (data) {
 	berkas = data
 	strURL = berkas.urlApi;
@@ -35,10 +32,9 @@ function PilihModul(angka){
 	}
 	else if (angka === 4) {
 		let strTulisBilangan = $("#inputTulisBilangan").val();
-		isi = strTulisBilangan;
+		isi = encodeURIComponent(strTulisBilangan);
 		idElement = "#outputTulisBilangan";
 	} else if (angka === 5) {
-		//jmlNama = $('#jumlahNama').find(":selected").text();
 		isi = OlahNamaAcak();
 		idElement = "#outputDaftarNama";
     }
@@ -53,7 +49,7 @@ function ProsesData(nomorModul, idElement, isi){
 	.then(json => {
 
 		const txtOutput = JSON.stringify(json);
-		console.log("teks = " + txtOutput);
+		//console.log("teks = " + txtOutput);
 		IsiDataElement(idElement, json, nomorModul);
 	})
 }
@@ -65,7 +61,8 @@ function IsiDataElement(idElement, json, noModul) {
 	let strIsi;
 
 	strIsi = isi;
-	
+
+	// cek prima
 	if (noModul == "1") {
 		let strAngka;
 		if (status == "Sukses") {
@@ -78,10 +75,9 @@ function IsiDataElement(idElement, json, noModul) {
 			strIsi = strAngka + ": bilangan prima.";
 		} else {
 			strIsi = strAngka + ": bukan bilangan prima.";
-		};
+		}
 		$(idElement).removeClass().addClass("alert alert-success");
-		//$('#top1 #s1').attr('class', 'alert alert-success');
-	} else if (noModul == "2") {
+	} else if (noModul == "2") { // deret prima
 		// jika data 'string', data tidak ditemukan
 		if (typeof strIsi === 'string') {
 			strIsi = isi;
@@ -90,7 +86,7 @@ function IsiDataElement(idElement, json, noModul) {
 			strIsi = strIsi.join(", ");
 		}
 	}
-	else if (noModul == "4") {
+	else if (noModul == "4") { // tulis bilangan
 		// jika data 'string', data tidak ditemukan
 		$(idElement).removeClass().addClass("alert alert-success");
 		if (strIsi === 'Data tidak ditemukan.') {
@@ -99,12 +95,11 @@ function IsiDataElement(idElement, json, noModul) {
 		} else {
 			// jika data object (array), value diperoleh
 			if ($("#pilihPenandaRibuan").is(":checked")) {
-				//console.log(parseInt(strIsi).toLocaleString());
 				strIsi = parseInt(strIsi).toLocaleString();
 			}
 			
 		}
-	} else if (noModul == "5") {
+	} else if (noModul == "5") { // nama acak
 		// jika data 'string', data tidak ditemukan
 		if (typeof strIsi === 'string') {
 			strIsi = isi;
@@ -118,7 +113,6 @@ function IsiDataElement(idElement, json, noModul) {
 		strIsi = status + ": " + isi;
 		if (noModul == "1" || noModul == "4") {
 			$(idElement).removeClass().addClass("alert alert-warning");
-			//$('#top1 #s1').attr('class', 'alert alert-warning');
 		}
 	}
 
@@ -155,15 +149,12 @@ function OlahNamaAcak() {
 	strSumber = lstSumber.join(",");
 
 	if ($("#pilNamaAbdul").is(":checked")) {
-		//console.log("sambung OK");
 		pilSambungAbdul = "1";
 	} else {
-		//console.log("tidak sambung 1");
 		pilSambungAbdul = "0";
 	}
-	// modul?id=galih.hermawan&modul=5&isi=x%20x&sumber=4&jumlah=10&sambung=0
-	teksArgumen = strFormat + "&sumber=" + strSumber + "&jumlah=" + strJmlNama + "&sambung=" + pilSambungAbdul;
-	//console.log("sambung: " + $("#pilNamaAbdul").is(":checked"));
+	// modul?id=id&modul=5&isi=x%20x&sumber=4&jumlah=10&sambung=0
+	teksArgumen = encodeURIComponent(strFormat) + "&sumber=" + strSumber + "&jumlah=" + strJmlNama + "&sambung=" + pilSambungAbdul;
 	return teksArgumen;
 
 }
