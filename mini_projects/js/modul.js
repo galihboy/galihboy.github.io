@@ -75,7 +75,13 @@ function IsiDataElement(idElement, json, noModul) {
 		$(idElement).removeClass().addClass("alert alert-success");
 		//$('#top1 #s1').attr('class', 'alert alert-success');
 	} else if (noModul == "2") {
-		strIsi = strIsi.join(", ");
+		// jika data 'string', data tidak ditemukan
+		if (typeof strIsi === 'string') {
+			strIsi = isi;
+		} else {
+			// jika data object (array), value diperoleh
+			strIsi = strIsi.join(", ");
+		}
 	}
 	else if (noModul == "4") {
 		if ($("#pilihPenandaRibuan").is(":checked")) {
