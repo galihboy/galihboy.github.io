@@ -67,10 +67,17 @@ function IsiDataElement(idElement, json, noModul) {
 	strIsi = isi;
 	
 	if (noModul == "1") {
-		if (json["isi"] == true) {
-			strIsi = "bilangan prima.";
+		let strAngka;
+		if (status == "Sukses") {
+			strAngka = "Angka " + $("#bilPrima").val();
 		} else {
-			strIsi = "bukan bilangan prima.";
+			strAngka = "";
+        }
+		
+		if (json["isi"] == true) {
+			strIsi = strAngka + ": bilangan prima.";
+		} else {
+			strIsi = strAngka + ": bukan bilangan prima.";
 		};
 		$(idElement).removeClass().addClass("alert alert-success");
 		//$('#top1 #s1').attr('class', 'alert alert-success');
@@ -84,10 +91,18 @@ function IsiDataElement(idElement, json, noModul) {
 		}
 	}
 	else if (noModul == "4") {
-		if ($("#pilihPenandaRibuan").is(":checked")) {
-			//console.log(parseInt(strIsi).toLocaleString());
-			strIsi = parseInt(strIsi).toLocaleString();
-			$(idElement).removeClass().addClass("alert alert-success");
+		// jika data 'string', data tidak ditemukan
+		$(idElement).removeClass().addClass("alert alert-success");
+		if (strIsi === 'Data tidak ditemukan.') {
+			strIsi = isi;
+			$(idElement).removeClass().addClass("alert alert-warning");
+		} else {
+			// jika data object (array), value diperoleh
+			if ($("#pilihPenandaRibuan").is(":checked")) {
+				//console.log(parseInt(strIsi).toLocaleString());
+				strIsi = parseInt(strIsi).toLocaleString();
+			}
+			
 		}
 	} else if (noModul == "5") {
 		// jika data 'string', data tidak ditemukan

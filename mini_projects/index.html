@@ -56,30 +56,32 @@
 													<div class="tab-content">
 														<hr>
 														<div class="tab-pane active" id="cekPrima">
-															<form class="form-inline">
+															<form class="form-inline" id="formPrima">
 																<div class="input-group mb-3">
 																	<input type="text" class="form-control" id="bilPrima" placeholder="Masukkan angka">
 																	<div class="input-group-append">
 																		<input type="button" class="btn btn-info" id="btnPrima" value="Cek" onclick="PilihModul(1)" />
+																		<input type="button" class="btn btn-warning" id="btnReset" value="Reset" onclick="$('#formPrima')[0].reset();" />
 																	</div>
 																</div>
 															</form>
 															<span id="outputPrima"></span>
 														</div>
 														<div class="tab-pane" id="deretPrima">
-															<form class="form-inline">
+															<form class="form-inline" id="formDeretPrima">
 																<div class="input-group mb-3">
 																	<input type="text" class="form-control" id="bilPrimaDeret1" placeholder="Angka minimum">
 																	<input type="text" class="form-control" id="bilPrimaDeret2" placeholder="Angka maksimum">
 																	<div class="input-group-append">
 																		<input type="button" class="btn btn-info" id="btnDeretPrima" value="Cek" onclick="PilihModul(2)" />
+																		<input type="button" class="btn btn-warning" id="btnReset" value="Reset" onclick="$('#formDeretPrima')[0].reset();$('#outputPrimaDeret').val('');" />
 																	</div>
 																</div>
 															</form>
 															<div class="form-floating">
 																<textarea class="form-control" placeholder="Deret bilangan prima..." id="outputPrimaDeret" style="height: 100px"></textarea>
 															</div>
-														</div>
+														</div>														
 													</div>
 												</div>
 											</div>
@@ -130,11 +132,12 @@
 													<div class="tab-content">
 														<hr>
 														<div class="tab-pane active" id="bacaBilangan">
-															<form class="form-inline">
+															<form class="form-inline" id="formBacaBilangan">
 																<div class="input-group mb-3">
 																	<input type="text" class="form-control" id="inputBacaBilangan" placeholder="Masukkan angka">
 																	<div class="input-group-append">
 																		<input type="button" class="btn btn-info" id="btnBacaBilangan" value="Baca" onclick="PilihModul(3)" />
+																		<input type="button" class="btn btn-warning" id="btnReset" value="Reset" onclick="$('#formBacaBilangan')[0].reset();$('#outputBacaBilangan').val('');" />
 																	</div>
 																</div>
 															</form>
@@ -151,8 +154,9 @@
 																			<div class="d-table-cell w-100">
 																				<textarea class="form-control" placeholder="Teks (latin) bilangan dalam bahasa Indonesia" id="inputTulisBilangan" style="height: 80px"></textarea>
 																			</div>
-																			<div class="d-table-cell align-top">
+																			<div class="d-table-cell align-top btn-group-sm btn-group-vertical">
 																				<input type="button" class="btn btn-info" id="btnTulisBilangan" value="Terjemah" onclick="PilihModul(4)" />
+																				<input type="button" class="btn btn-warning" id="btnReset" value="Reset" onclick="$('#inputTulisBilangan').val('');" />
 																			</div>
 																			<div class="form-check">
 																				<input type="checkbox" class="form-check-input" id="pilihPenandaRibuan">
