@@ -90,7 +90,13 @@ function IsiDataElement(idElement, json, noModul) {
 			$(idElement).removeClass().addClass("alert alert-success");
 		}
 	} else if (noModul == "5") {
-		strIsi = strIsi.join(",\r\n");
+		// jika data 'string', data tidak ditemukan
+		if (typeof strIsi === 'string') {
+			strIsi = isi;
+		} else {
+			// jika data object (array), value diperoleh
+			strIsi = strIsi.join(",\r\n");
+		}
 	}
 
 	if (status == "Error") {
