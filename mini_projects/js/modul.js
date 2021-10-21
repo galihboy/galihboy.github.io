@@ -95,7 +95,7 @@ function IsiDataElement(idElement, json, noModul) {
 			strIsi = isi;
 		} else {
 			// jika data object (array), value diperoleh
-			strIsi = strIsi.join(",\r\n");
+			strIsi = strIsi.join("\r\n");
 		}
 	}
 
