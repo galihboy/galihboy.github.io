@@ -37,7 +37,11 @@ function PilihModul(angka){
 	} else if (angka === 5) {
 		isi = OlahNamaAcak();
 		idElement = "#outputDaftarNama";
-    }
+	} else if (angka === 6) {
+		let strJmlSalaman = $("#jmlOrang").val();
+		isi = strJmlSalaman
+		idElement = "#outputJmlSalaman";
+	}
 	ProsesData(angka, idElement, isi)
 }
 
@@ -107,11 +111,22 @@ function IsiDataElement(idElement, json, noModul) {
 			// jika data object (array), value diperoleh
 			strIsi = strIsi.join("\r\n");
 		}
+	} else if (noModul == "6") { // jml salaman
+		// jika sukses
+		if (status == "Sukses") {
+			//strAngka = "Angka " + $("#bilPrima").val();
+			strIsi = "Terdapat " + isi + " jabat tangan dalam " + $("#jmlOrang").val() + " orang.";
+			$(idElement).removeClass().addClass("alert alert-success");
+		} //else {
+			//strIsi = isi;
+			//$(idElement).removeClass().addClass("alert alert-warning");
+		//}
+		//strIsi = isi;
 	}
 
 	if (status == "Error") {
 		strIsi = status + ": " + isi;
-		if (noModul == "1" || noModul == "4") {
+		if (noModul == "1" || noModul == "4" || noModul == "6") {
 			$(idElement).removeClass().addClass("alert alert-warning");
 		}
 	}

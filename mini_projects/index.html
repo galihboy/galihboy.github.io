@@ -14,6 +14,16 @@
 	<script src="js/modul.js"></script>
 	<!-- CSS Only Accordion-->
 	<link rel="stylesheet" href="css/style.css">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-212617993-2"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-212617993-2');
+	</script>
+
 	<title>Galih Hermawan - Mini Projects</title>
 </head>
 <body>
@@ -44,7 +54,7 @@
 													<p>Silakan pilih <strong>Cek Bilangan</strong> untuk sekedar memeriksa apakah sebuah bilangan itu termasuk bilangan prima atau bukan. Dan pilih <strong>Deret Bilangan</strong> untuk membangkitkan deret bilangan prima dari nilai minimum hingga nilai maksimum yang ditentukan.</p>
 													<div class="card bg-light mb-3" style="max-width: 12rem;">
 														<div class="card-body">
-															<a href="https://masgalih.medium.com/deret-bilangan-prima-dalam-python-8a343084ad6f" target="_blank" class="btn btn-outline-info">Tutorial</a>
+															<a href="https://blog.galih.eu/deret-bilangan-prima-dalam-python" target="_blank" class="btn btn-outline-info">Tutorial</a>
 															<a href="https://github.com/galihboy/py-mini-projects/tree/main/Deret_Prima" target="_blank" class="btn btn-outline-info">Kode</a>
 														</div>
 													</div>
@@ -81,7 +91,7 @@
 															<div class="form-floating">
 																<textarea class="form-control" placeholder="Deret bilangan prima..." id="outputPrimaDeret" style="height: 100px"></textarea>
 															</div>
-														</div>														
+														</div>
 													</div>
 												</div>
 											</div>
@@ -118,8 +128,8 @@
 													</p>
 													<div class="card bg-light mb-3" style="max-width: 30rem;">
 														<div class="card-body">
-															<a href="https://masgalih.medium.com/membaca-lambang-bilangan-dalam-python-secara-bertahap-be50279d8538" target="_blank" class="btn btn-outline-info">Tutorial baca bilangan</a>
-															<a href="https://masgalih.medium.com/menerjemahkan-teks-bilangan-dalam-python-untuk-pemula-416b3e645e68" target="_blank" class="btn btn-outline-info">Tutorial tulis bilangan</a>
+															<a href="https://blog.galih.eu/membaca-lambang-bilangan-dalam-python-secara-bertahap" target="_blank" class="btn btn-outline-info">Tutorial baca bilangan</a>
+															<a href="https://blog.galih.eu/menerjemahkan-teks-bilangan-dalam-python-untuk-pemula" target="_blank" class="btn btn-outline-info">Tutorial tulis bilangan</a>
 															<a href="https://github.com/galihboy/Baca_Tulis_Bilangan" target="_blank" class="btn btn-outline-info">Kode</a>
 														</div>
 													</div>
@@ -210,7 +220,7 @@
 										</p>
 										<div class="card bg-light mb-3" style="max-width: 12rem;">
 											<div class="card-body">
-												<a href="https://masgalih.medium.com/pembangkit-nama-acak-otomatis-berbasis-aturan-menggunakan-python-d2e954c9b6c9" target="_blank" class="btn btn-outline-info">Tutorial</a>
+												<a href="https://blog.galih.eu/pembangkit-nama-acak-otomatis-berbasis-aturan-menggunakan-python" target="_blank" class="btn btn-outline-info">Tutorial</a>
 												<a href="https://github.com/galihboy/Nama_Acak" target="_blank" class="btn btn-outline-info">Kode</a>
 											</div>
 										</div>
@@ -233,7 +243,7 @@
 													<option value="9">9</option>
 													<option value="10">10</option>
 												</select>
-											</div>				
+											</div>
 											<div class="btn-group btn-group-justified" role="group">
 												<input type="button" class="btn btn-info" id="btnBuatNama" value="Buat nama" onclick="PilihModul(5)" />
 												<input type="button" class="btn btn-warning" id="btnReset" value="Reset" onclick="$('#formNamaAcak')[0].reset();$('input[type=checkbox]').prop('checked',false);$('#outputDaftarNama').val('');" />
@@ -278,14 +288,56 @@
 								</div>
 							</div>
 							<div class="card">
-								<div class="card-header" id="headingFour">
+								<div class="card-header" id="headingEmpat">
 									<h5 class="mb-0">
-										<button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-											<i class="fa fa-expeditedssl main"></i><i class="fa fa-angle-double-right mr-3"></i>4. Lain.
+										<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseEmpat" aria-expanded="true" aria-controls="collapseEmpat">
+											<i class="fa fa-plus main"></i><i class="fa fa-angle-double-right mr-3"></i>4. Hitung Jumlah Jabat Tangan.
 										</button>
 									</h5>
 								</div>
-								<div id="collapseFour" class="collapse fade" aria-labelledby="headingFour" data-parent="#accordionExample">
+								<div id="collapseEmpat" class="collapse show fade" aria-labelledby="headingEmpat" data-parent="#accordionExample">
+									<div class="card-body">
+										<div class="container">
+											<div class="row">
+												<div class="span12">
+													<p>Menghitung jumlah jabat tangan (salaman) yang mungkin terjadi dalam sejumlah orang.</p>
+													<div class="card bg-light mb-3" style="max-width: 12rem;">
+														<div class="card-body">
+															<a href="https://blog.galih.com/" target="_blank" class="btn btn-outline-info">Blog</a>
+															<a href="https://github.com/galihboy/py-mini-projects/tree/main/Jumlah_Jabat_Tangan" target="_blank" class="btn btn-outline-info">Kode</a>
+														</div>
+													</div>
+													<strong><u>Demo.</u></strong> <br /><br />
+													<div class="tab-content">
+														<hr>
+														<div class="tab-pane active" id="cekJmlSalaman">
+															<form class="form-inline" id="formJmlSalaman">
+																<div class="input-group mb-3">
+																	<input type="text" class="form-control" id="jmlOrang" placeholder="Angka jumlah orang">
+																	<div class="input-group-append">
+																		<input type="button" class="btn btn-info" id="btnJmlSalaman" value="Cek" onclick="PilihModul(6)" />
+																		<input type="button" class="btn btn-warning" id="btnReset" value="Reset" onclick="$('#formJmlSalaman')[0].reset();" />
+																	</div>
+																</div>
+															</form>
+															<span id="outputJmlSalaman"></span>
+														</div>						
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card">
+								<div class="card-header" id="headingLima">
+									<h5 class="mb-0">
+										<button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+											<i class="fa fa-expeditedssl main"></i><i class="fa fa-angle-double-right mr-3"></i>5. Lain-lain.
+										</button>
+									</h5>
+								</div>
+								<div id="collapseFour" class="collapse fade" aria-labelledby="headingLima" data-parent="#accordionExample">
 									<div class="card-body">
 										Upcoming...
 									</div>
@@ -299,25 +351,23 @@
 	</div>
 	<!-- .// Accordion -->
 
-
-
-
-	<script>
-			// pengaturan check box piihan nama Abdul
-			//$("#pilNamaIslami").on("click", function () {
-			 //   if (!$("#pilNamaIslami").is(":checked")) {
-			  //      $("#pilNamaAbdul").attr('disabled', true);
-			   //     $("#pilNamaAbdul").prop("checked", false);
-				//} else {
-				 //   $("#pilNamaAbdul").attr('disabled', false);
-				//}
-			//});
-	</script>
 	<footer class="bg-light text-center text-white">
 		<!-- Grid container -->
 		<div class="container p-0 pb-0">
 			<!-- Section: Social media -->
 			<section class="mb-4">
+				<a class="btn btn-primary btn-floating m-1"
+				   style="background-color: #00ff21;"
+				   href="https://galih.eu"
+				   role="button">
+					<i class="fa fa-home"></i>
+				</a>
+				<a class="btn btn-primary btn-floating m-1"
+				   style="background-color: #ffd800;"
+				   href="https://blog.galih.eu"
+				   role="button">
+					<i class="fa fa-angle-double-right"></i>
+				</a>
 				<!-- Twitter -->
 				<a class="btn btn-primary btn-floating m-1"
 				   style="background-color: #55acee;"
@@ -335,7 +385,7 @@
 				<!-- Linkedin -->
 				<a class="btn btn-primary btn-floating m-1"
 				   style="background-color: #0082ca;"
-				   href="https://id.linkedin.com/in/galih-hermawan-a9278522"
+				   href="https://id.linkedin.com/in/galih-hermawan"
 				   role="button">
 					<i class="fa fa-linkedin"></i>
 				</a>
@@ -349,7 +399,7 @@
 				<!-- Youtube -->
 				<a class="btn btn-primary btn-floating m-1"
 				   style="background-color: #e83345;"
-				   href="https://www.youtube.com/user/m4sg4l1h"
+				   href="https://www.youtube.com/channel/UCHt-UId8pNiWuAa6iAyLeyQ"
 				   role="button">
 					<i class="fa fa-youtube"></i>
 				</a>
@@ -357,7 +407,7 @@
 			<!-- Section: Social media -->
 		</div>
 		<!-- Grid container -->
-		<div class="text-right p-3"><span class="alert alert-info">Last update: 2021-10-21, 23.00</span></div>
+		<div class="text-right p-3"><span class="alert alert-info">Last update: 2021-11-17, 05.00</span></div>
 		<!-- Copyright -->
 		<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
 			© 2021 Copyright:
