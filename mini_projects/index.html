@@ -290,7 +290,7 @@
 							<div class="card">
 								<div class="card-header" id="headingEmpat">
 									<h5 class="mb-0">
-										<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseEmpat" aria-expanded="true" aria-controls="collapseEmpat">
+										<button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseEmpat" aria-expanded="false" aria-controls="collapseEmpat">
 											<i class="fa fa-plus main"></i><i class="fa fa-angle-double-right mr-3"></i>4. Hitung Jumlah Jabat Tangan.
 										</button>
 									</h5>
@@ -300,7 +300,23 @@
 										<div class="container">
 											<div class="row">
 												<div class="span12">
-													<p>Menghitung jumlah jabat tangan (salaman) yang mungkin terjadi dalam sejumlah orang.</p>
+													<p>
+														Menghitung jumlah jabat tangan (salaman) yang mungkin terjadi dalam sejumlah orang.<br />
+														<ul>
+															<li>
+																2 orang = AB -> A-B (1x salaman)
+															</li>
+															<li>
+																3 orang = ABC -> A-B, A-C, B-C (3x salaman)
+															</li>
+															<li>
+																4 orang = ABCD -> A-B, A-C, A-D, B-C, B-D, C-D (6x salaman)
+															</li>
+															<li>
+																5 orang = ABCDE -> A-B, A-C, A-D, A-E, B-C, B-D, B-E, C-D, C-E, D-E (10x salaman)
+															</li>
+														</ul>
+													</p>
 													<div class="card bg-light mb-3" style="max-width: 12rem;">
 														<div class="card-body">
 															<a href="https://blog.galih.com/" target="_blank" class="btn btn-outline-info">Blog</a>
