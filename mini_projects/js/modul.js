@@ -41,6 +41,10 @@ function PilihModul(angka){
 		let strJmlSalaman = $("#jmlOrang").val();
 		isi = strJmlSalaman
 		idElement = "#outputJmlSalaman";
+	} else if (angka === 7) {
+		let strFaktorPrima = $("#inputFaktorPrima").val();
+		isi = strFaktorPrima
+		idElement = "#outputFaktorPrima";
 	}
 	ProsesData(angka, idElement, isi)
 }
@@ -122,6 +126,19 @@ function IsiDataElement(idElement, json, noModul) {
 			//$(idElement).removeClass().addClass("alert alert-warning");
 		//}
 		//strIsi = isi;
+	} else if (noModul == "7") { // faktorisasi prima
+		// jika sukses
+		if (status == "Sukses") {
+			//strAngka = "Angka " + $("#bilPrima").val();
+			//strIsi = "Terdapat " + isi + " jabat tangan dalam " + $("#inputFaktorPrima").val() + " orang.";
+			strIsi = "Bilangan faktor dari " + $("#inputFaktorPrima").val() + " adalah " + isi[0] + "\n";
+			strIsi = strIsi + "Hasil perkalian = " + isi[1] + "\n";
+			strIsi = strIsi + "Faktor prima = " + isi[2] + "\n";
+			strIsi = strIsi + "Bentuk sederhana = " + isi[3];
+			//$(idElement).autosize();
+			//autosize($(idElement));
+			//$(idElement).removeClass().addClass("alert alert-success");
+		}
 	}
 
 	if (status == "Error") {
