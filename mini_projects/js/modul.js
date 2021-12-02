@@ -131,7 +131,7 @@ function IsiDataElement(idElement, json, noModul) {
 		if (status == "Sukses") {
 			//strAngka = "Angka " + $("#bilPrima").val();
 			//strIsi = "Terdapat " + isi + " jabat tangan dalam " + $("#inputFaktorPrima").val() + " orang.";
-			strIsi = "Bilangan faktor dari " + $("#inputFaktorPrima").val() + " adalah " + isi[0] + "\n";
+			strIsi = "Faktor bilangan dari " + $("#inputFaktorPrima").val() + " adalah " + isi[0] + "\n";
 			strIsi = strIsi + "Hasil perkalian = " + isi[1] + "\n";
 			strIsi = strIsi + "Faktor prima = " + isi[2] + "\n";
 			strIsi = strIsi + "Bentuk sederhana = " + isi[3];
