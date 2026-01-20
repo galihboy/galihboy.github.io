@@ -1,65 +1,232 @@
-<!DOCTYPE HTML>
-<!--
-	Aerial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-	<title>Website Galih Hermawan</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/site.webmanifest">
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-212617993-2"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galih Hermawan - Lecturer & Researcher</title>
 
-		gtag('config', 'UA-212617993-2');
-	</script>
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Galih Hermawan - Lecturer, Researcher in Informatics Engineering at UNIKOM. Academic profile, publications, and professional links.">
+    <meta name="keywords" content="Galih Hermawan, Informatics, UNIKOM, Lecturer, Researcher, Computer Science">
+    <meta name="author" content="Galih Hermawan">
 
+    <!-- Open Graph -->
+    <meta property="og:title" content="Galih Hermawan - Lecturer & Researcher">
+    <meta property="og:description" content="Informatics Engineering Lecturer and Researcher at UNIKOM">
+    <meta property="og:image" content="https://galih.eu/Fotoku%20+%20peci%20kecil.webp">
+    <meta property="og:url" content="https://galih.eu">
+    <meta property="og:type" content="profile">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@_galihhermawan_">
+    <meta name="twitter:title" content="Galih Hermawan - Lecturer & Researcher">
+    <meta name="twitter:description" content="Informatics Engineering Lecturer and Researcher at UNIKOM">
+
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-212617993-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-212617993-2');
+    </script>
 </head>
-	<body class="is-preload">
-		<div id="wrapper">
-			<div id="bg"></div>
-			<div id="overlay"></div>
-			<div id="main">
 
-				<!-- Header -->
-				<header id="header">
-					<h1 style="text-shadow: 3px 3px 12px #07f85d;">Galih Hermawan</h1>
-					<p style="color: #ebf5ef;text-shadow: #000000 -2px 4px 8px;">Lecturer &nbsp;&bull;&nbsp; Researcher &nbsp;&bull;&nbsp; Informatics Engineering. UNIKOM</p>
-					<nav>
-						<ul>
-							<li><a href="https://galih.eu" class="icon solid fa-home"><span class="label">Website</span></a></li>
-							<li><a href="https://blog.galih.eu" class="icon solid fa-pen"><span class="label">Blog</span></a></li>
-							<li><a href="https://twitter.com/_galihhermawan_" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="https://masgalih.medium.com" class="icon brands fa-medium"><span class="label">Medium</span></a></li>							
-							<li><a href="https://github.com/galihboy" class="icon brands fa-github"><span class="label">Github</span></a></li>
-							<li><a href="https://galihboy.github.io/mini_projects/" class="icon solid fa-hdd"><span class="label">Demo</span></a></li>
-							<li><a href="https://www.youtube.com/channel/UCHt-UId8pNiWuAa6iAyLeyQ" class="icon brands fa-youtube"><span class="label">Youtube</span></a></li>
-						</ul>
-					</nav>
-				</header>
+<body>
+    <!-- Header Controls -->
+    <header class="controls">
+        <button id="langToggle" class="control-btn" aria-label="Toggle Language" data-tooltip-en="Switch to Indonesian"
+            data-tooltip-id="Ubah ke Bahasa Inggris">
+            <span class="lang-text">ID</span>
+        </button>
+        <button id="themeToggle" class="control-btn" aria-label="Toggle Theme" data-tooltip-en="Toggle Theme"
+            data-tooltip-id="Ganti Tema">
+            <i class="fas fa-moon"></i>
+        </button>
+    </header>
 
-				<!-- Footer -->
-				<footer id="footer">
-					<span class="copyright">&copy; Galih Hermawan. Design: <a href="http://html5up.net">HTML5 UP</a>. Background Photo: <a href="https://unsplash.com/@lee0201">Unsplash</a>.</span>
-				</footer>
+    <!-- Main Container -->
+    <main class="container">
+        <!-- Profile Section -->
+        <section class="profile-section">
+            <div class="profile-photo">
+                <img src="Fotoku + peci kecil.webp" alt="Galih Hermawan" loading="lazy">
+            </div>
+            <h1 class="profile-name">Galih Hermawan</h1>
+            <p class="profile-title">
+                <span data-en="Lecturer • Researcher • " data-id="Dosen • Peneliti • ">Lecturer • Researcher • </span><a
+                    href="https://if.unikom.ac.id/" target="_blank" rel="noopener" class="inline-link"><span
+                        data-en="Informatics Engineering" data-id="Teknik Informatika">Informatics
+                        Engineering</span></a>
+            </p>
+            <p class="profile-affiliation">
+                <a href="https://www.unikom.ac.id/" target="_blank" rel="noopener" class="inline-link">
+                    <span data-en="Universitas Komputer Indonesia (UNIKOM)"
+                        data-id="Universitas Komputer Indonesia (UNIKOM)">Universitas Komputer Indonesia (UNIKOM)</span>
+                </a>
+            </p>
+        </section>
 
-			</div>
-		</div>
-		<script>
-			window.onload = function() { document.body.classList.remove('is-preload'); }
-			window.ontouchmove = function() { return false; }
-			window.onorientationchange = function() { document.body.scrollTop = 0; }
-		</script>
-	</body>
+        <!-- Personal / Portfolio Section -->
+        <section class="links-section">
+            <h2 class="section-title" data-en="Personal / Portfolio" data-id="Personal / Portofolio">
+                Personal / Portfolio
+            </h2>
+            <div class="links-grid">
+                <a href="https://galih.eu" class="link-card" target="_blank" rel="noopener"
+                    data-tooltip-en="Go to main personal website" data-tooltip-id="Buka situs personal utama">
+                    <i class="fas fa-home"></i>
+                    <span data-en="Homepage" data-id="Beranda">Homepage</span>
+                </a>
+                <a href="https://blog.galih.eu" class="link-card" target="_blank" rel="noopener"
+                    data-tooltip-en="Read articles and technical notes"
+                    data-tooltip-id="Baca artikel dan catatan teknis">
+                    <i class="fas fa-pen"></i>
+                    <span>Blog</span>
+                </a>
+                <a href="https://galih.eu/mini_projects/" class="link-card" target="_blank" rel="noopener"
+                    data-tooltip-en="Explore interactive mini projects"
+                    data-tooltip-id="Eksplorasi proyek mini interaktif">
+                    <i class="fas fa-hdd"></i>
+                    <span data-en="Demo Projects" data-id="Proyek Demo">Demo Projects</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Academic Profiles Section -->
+        <section class="links-section">
+            <h2 class="section-title" data-en="Academic Profiles" data-id="Profil Akademik">
+                Academic Profiles
+            </h2>
+            <div class="links-grid">
+                <a href="https://scholar.google.com/citations?user=jPQg7owAAAAJ" class="link-card" target="_blank"
+                    rel="noopener" data-tooltip-en="Academic publications & citations"
+                    data-tooltip-id="Publikasi akademik & sitasi">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Google Scholar</span>
+                </a>
+                <a href="https://sinta.kemdiktisaintek.go.id/authors/profile/258217" class="link-card" target="_blank"
+                    rel="noopener" data-tooltip-en="Indonesian research ranking (SINTA)"
+                    data-tooltip-id="Ranking riset Indonesia (SINTA)">
+                    <i class="fas fa-university"></i>
+                    <span>SINTA</span>
+                </a>
+                <a href="https://www.scopus.com/authid/detail.uri?authorId=57189241247" class="link-card"
+                    target="_blank" rel="noopener" data-tooltip-en="International publication database"
+                    data-tooltip-id="Database publikasi internasional">
+                    <i class="fas fa-book"></i>
+                    <span>Scopus</span>
+                </a>
+                <a href="https://www.webofscience.com/wos/author/record/AAJ-2542-2020" class="link-card" target="_blank"
+                    rel="noopener" data-tooltip-en="Global citation database (WoS)"
+                    data-tooltip-id="Database sitasi global (WoS)">
+                    <i class="fas fa-flask"></i>
+                    <span>Web of Science</span>
+                </a>
+                <a href="https://orcid.org/0000-0002-8476-5996" class="link-card" target="_blank" rel="noopener"
+                    data-tooltip-en="Unique researcher identifier" data-tooltip-id="Identitas unik peneliti">
+                    <i class="fab fa-orcid"></i>
+                    <span>ORCID</span>
+                </a>
+                <a href="https://www.researchgate.net/profile/Galih-Hermawan" class="link-card" target="_blank"
+                    rel="noopener" data-tooltip-en="Research network & collaboration"
+                    data-tooltip-id="Jaringan riset & kolaborasi">
+                    <i class="fab fa-researchgate"></i>
+                    <span>ResearchGate</span>
+                </a>
+                <a href="https://unikom.academia.edu/GalihHermawan" class="link-card" target="_blank" rel="noopener"
+                    data-tooltip-en="Academic paper sharing platform" data-tooltip-id="Platform berbagi karya ilmiah">
+                    <i class="fas fa-user-graduate"></i>
+                    <span>Academia.edu</span>
+                </a>
+                <a href="https://simlitabmas.unikom.ac.id/dosen/galih-hermawan" class="link-card" target="_blank"
+                    rel="noopener" data-tooltip-en="Internal research management (UNIKOM)"
+                    data-tooltip-id="Manajemen riset internal (UNIKOM)">
+                    <i class="fas fa-building-columns"></i>
+                    <span>SIMLITABMAS</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Professional & Social Media Section -->
+        <section class="links-section">
+            <h2 class="section-title" data-en="Professional & Social Media" data-id="Profesional & Media Sosial">
+                Professional & Social Media
+            </h2>
+            <div class="links-grid">
+                <a href="https://id.linkedin.com/in/galih-hermawan" class="link-card" target="_blank" rel="noopener"
+                    data-tooltip-en="Professional career profile" data-tooltip-id="Profil karir profesional">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/galihboy" class="link-card" target="_blank" rel="noopener"
+                    data-tooltip-en="Personal code repository" data-tooltip-id="Repositori kode pribadi">
+                    <i class="fab fa-github"></i>
+                    <span>Github</span>
+                </a>
+                <a href="https://github.com/Galih-Hermawan-Unikom" class="link-card" target="_blank" rel="noopener"
+                    data-tooltip-en="Work/Institutional repository" data-tooltip-id="Repositori kerja/institusi">
+                    <i class="fab fa-github"></i>
+                    <span>Github Unikom</span>
+                </a>
+                <a href="https://masgalih.medium.com" class="link-card" target="_blank" rel="noopener"
+                    data-tooltip-en="Personal & technical articles" data-tooltip-id="Artikel personal & teknis">
+                    <i class="fab fa-medium"></i>
+                    <span>Medium</span>
+                </a>
+                <a href="http://www.youtube.com/@galihhermawan" class="link-card" target="_blank" rel="noopener"
+                    data-tooltip-en="Educational videos & tutorials" data-tooltip-id="Video edukatif & tutorial">
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube</span>
+                </a>
+                <a href="https://x.com/_galihhermawan_" class="link-card" target="_blank" rel="noopener"
+                    data-tooltip-en="Status & tech updates" data-tooltip-id="Update status & teknologi">
+                    <i class="fab fa-twitter"></i>
+                    <span>X (Twitter)</span>
+                </a>
+                <a href="https://www.instagram.com/galihhermawan/" class="link-card" target="_blank" rel="noopener"
+                    data-tooltip-en="Photography & life updates" data-tooltip-id="Update foto & keseharian">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://www.threads.com/@galihhermawan" class="link-card" target="_blank" rel="noopener"
+                    data-tooltip-en="Thread-based social sharing" data-tooltip-id="Berbagi status berbasis teks">
+                    <i class="fab fa-threads"></i>
+                    <span>Threads</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; <span id="currentYear"></span> Galih Hermawan.
+            <span data-en="All rights reserved." data-id="Hak cipta dilindungi.">All rights reserved.</span>
+        </p>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="assets/js/main.js"></script>
+</body>
+
 </html>
