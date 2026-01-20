@@ -1,192 +1,256 @@
-// modul: Galih Hermawan @ https://galih.eu
+/**
+ * Modul: Galih Hermawan @ https://galih.eu
+ * Refactored for modern JS, async/await, and better UX.
+ */
 
-var berkas;
-var strURL;
-var idApi;
-var kodeModul;
+const AppConfig = {
+	apiUrl: "https://galihboy-io-api.vercel.app/modul", // Default fallback
+	userId: "galih.hermawan", // Default fallback
+	isLoaded: false,
 
-jQuery.get('data.json', function (data) {
-	berkas = data
-	strURL = berkas.urlApi;
-	idApi = berkas.id;
+	async init() {
+		try {
+			const response = await fetch('data.json');
+			if (!response.ok) throw new Error('Network response was not ok');
+			const data = await response.json();
+			this.apiUrl = data.urlApi;
+			this.userId = data.id;
+			console.log('App configuration loaded from data.json');
+		} catch (error) {
+			console.warn('Using default configuration. Failed to load data.json (likely due to CORS/file protocol):', error);
+			// We suppress the alert because we have valid defaults
+		} finally {
+			this.isLoaded = true;
+		}
+	}
+};
+
+// Initialize config on load
+document.addEventListener('DOMContentLoaded', () => {
+	AppConfig.init();
 });
 
-function PilihModul(angka){
-	let isi;
-	
-	if (angka === 1) {
-		let strPrima = $("#bilPrima").val();
-		isi = strPrima
-		idElement = "#outputPrima";
+/**
+ * Main handler for module actions
+ * @param {number} moduleNumber - The module ID (1-7)
+ */
+async function PilihModul(moduleNumber) {
+	if (!AppConfig.isLoaded) {
+		await AppConfig.init();
 	}
-	else if (angka === 2) {
-		let strPrima1 = $("#bilPrimaDeret1").val();
-		let strPrima2 = $("#bilPrimaDeret2").val();
-		isi = strPrima1 + "," + strPrima2;
-		idElement = "#outputPrimaDeret";
+
+	let inputContent = '';
+	let outputElementId = '';
+	let triggeringButtonId = '';
+
+	// 1. Gather Input Data
+	try {
+		switch (moduleNumber) {
+			case 1: // Cek Prima
+				inputContent = $("#bilPrima").val();
+				outputElementId = "#outputPrima";
+				triggeringButtonId = "#btnPrima";
+				break;
+			case 2: // Deret Prima
+				const p1 = $("#bilPrimaDeret1").val();
+				const p2 = $("#bilPrimaDeret2").val();
+				inputContent = `${p1},${p2}`;
+				outputElementId = "#outputPrimaDeret";
+				triggeringButtonId = "#btnDeretPrima";
+				break;
+			case 3: // Baca Bilangan
+				inputContent = $("#inputBacaBilangan").val();
+				outputElementId = "#outputBacaBilangan";
+				triggeringButtonId = "#btnBacaBilangan";
+				break;
+			case 4: // Tulis Bilangan
+				inputContent = encodeURIComponent($("#inputTulisBilangan").val());
+				outputElementId = "#outputTulisBilangan";
+				triggeringButtonId = "#btnTulisBilangan";
+				break;
+			case 5: // Nama Acak
+				inputContent = OlahNamaAcak();
+				outputElementId = "#outputDaftarNama";
+				triggeringButtonId = "#btnBuatNama";
+				break;
+			case 6: // Jumlah Salaman
+				inputContent = $("#jmlOrang").val();
+				outputElementId = "#outputJmlSalaman";
+				triggeringButtonId = "#btnJmlSalaman";
+				break;
+			case 7: // Faktorisasi Prima
+				inputContent = $("#inputFaktorPrima").val();
+				outputElementId = "#outputFaktorPrima";
+				triggeringButtonId = "#btnFaktorPrima";
+				break;
+			default:
+				console.error('Modul tidak dikenali');
+				return;
+		}
+
+		// 2. Set Loading State
+		setLoadingState(triggeringButtonId, true);
+		$(outputElementId).removeClass("alert alert-success alert-danger alert-warning").text(''); // Clear previous output
+
+		// 3. Process Data via API
+		await ProsesData(moduleNumber, outputElementId, inputContent);
+
+	} catch (error) {
+		console.error('Error in PilihModul:', error);
+		if (outputElementId) {
+			$(outputElementId).text('Terjadi kesalahan internal.');
+		}
+	} finally {
+		// 4. Reset Loading State
+		setLoadingState(triggeringButtonId, false);
 	}
-	else if (angka === 3) {
-		let strBacaBilangan = $("#inputBacaBilangan").val();
-		isi = strBacaBilangan;
-		idElement = "#outputBacaBilangan";
-	}
-	else if (angka === 4) {
-		let strTulisBilangan = $("#inputTulisBilangan").val();
-		isi = encodeURIComponent(strTulisBilangan);
-		idElement = "#outputTulisBilangan";
-	} else if (angka === 5) {
-		isi = OlahNamaAcak();
-		idElement = "#outputDaftarNama";
-	} else if (angka === 6) {
-		let strJmlSalaman = $("#jmlOrang").val();
-		isi = strJmlSalaman
-		idElement = "#outputJmlSalaman";
-	} else if (angka === 7) {
-		let strFaktorPrima = $("#inputFaktorPrima").val();
-		isi = strFaktorPrima
-		idElement = "#outputFaktorPrima";
-	}
-	ProsesData(angka, idElement, isi)
 }
 
-function ProsesData(nomorModul, idElement, isi){
-	const url = strURL + "?id=" + idApi + "&modul=" + nomorModul + "&isi=" + isi;
-	console.log(url);
-	fetch(url)
-	.then(response => response.json())  
-	.then(json => {
+/**
+ * Sends data to the API and handles the response
+ */
+async function ProsesData(moduleNumber, outputElementId, content) {
+	const url = `${AppConfig.apiUrl}?id=${AppConfig.userId}&modul=${moduleNumber}&isi=${content}`;
+	console.log(`Requesting: ${url}`);
 
+	try {
+		const response = await fetch(url);
+		if (!response.ok) throw new Error(`HTTP Error: ${response.status}`);
+
+		const json = await response.json();
 		const txtOutput = JSON.stringify(json);
-		//console.log("teks = " + txtOutput);
-		IsiDataElement(idElement, json, nomorModul);
-	})
+		// console.log("Response:", txtOutput);
+
+		IsiDataElement(outputElementId, json, moduleNumber);
+
+	} catch (error) {
+		console.error('API Request Failed:', error);
+		$(outputElementId).text(`Gagal menghubungi server: ${error.message}`);
+	}
 }
 
-function IsiDataElement(idElement, json, noModul) {	
-	let isi = json["isi"];
-	let status = json["status"];
-	let strStatus;
-	let strIsi;
+/**
+ * Formats and displays the API response in the UI
+ */
+function IsiDataElement(elementId, json, moduleNumber) {
+	const isi = json.isi;
+	const status = json.status;
+	let displayContent = isi;
+	const isTextarea = $(elementId).is("textarea");
 
-	strIsi = isi;
+	// Default cleanup: Remove only alert classes to preserve form-control
+	$(elementId).removeClass("alert alert-success alert-danger alert-warning");
 
-	// cek prima
-	if (noModul == "1") {
-		let strAngka;
-		if (status == "Sukses") {
-			strAngka = "Angka " + $("#bilPrima").val();
-		} else {
-			strAngka = "";
-        }
-		
-		if (json["isi"] == true) {
-			strIsi = strAngka + ": bilangan prima.";
-		} else {
-			strIsi = strAngka + ": bukan bilangan prima.";
+	if (status === "Error") {
+		displayContent = `${status}: ${isi}`;
+		// Only apply alert classes to non-textarea elements
+		if (!isTextarea) {
+			$(elementId).addClass("alert alert-danger");
 		}
-		$(idElement).removeClass().addClass("alert alert-success");
-	} else if (noModul == "2") { // deret prima
-		// jika data 'string', data tidak ditemukan
-		if (typeof strIsi === 'string') {
-			strIsi = isi;
-		} else {
-			// jika data object (array), value diperoleh
-			strIsi = strIsi.join(", ");
-		}
-	}
-	else if (noModul == "4") { // tulis bilangan
-		// jika data 'string', data tidak ditemukan
-		$(idElement).removeClass().addClass("alert alert-success");
-		if (strIsi === 'Data tidak ditemukan.') {
-			strIsi = isi;
-			$(idElement).removeClass().addClass("alert alert-warning");
-		} else {
-			// jika data object (array), value diperoleh
-			if ($("#pilihPenandaRibuan").is(":checked")) {
-				strIsi = parseInt(strIsi).toLocaleString();
-			}
-			
-		}
-	} else if (noModul == "5") { // nama acak
-		// jika data 'string', data tidak ditemukan
-		if (typeof strIsi === 'string') {
-			strIsi = isi;
-		} else {
-			// jika data object (array), value diperoleh
-			strIsi = strIsi.join("\r\n");
-		}
-	} else if (noModul == "6") { // jml salaman
-		// jika sukses
-		if (status == "Sukses") {
-			//strAngka = "Angka " + $("#bilPrima").val();
-			strIsi = "Terdapat " + isi + " jabat tangan dalam " + $("#jmlOrang").val() + " orang.";
-			$(idElement).removeClass().addClass("alert alert-success");
-		} //else {
-			//strIsi = isi;
-			//$(idElement).removeClass().addClass("alert alert-warning");
-		//}
-		//strIsi = isi;
-	} else if (noModul == "7") { // faktorisasi prima
-		// jika sukses
-		if (status == "Sukses") {
-			//strAngka = "Angka " + $("#bilPrima").val();
-			//strIsi = "Terdapat " + isi + " jabat tangan dalam " + $("#inputFaktorPrima").val() + " orang.";
-			strIsi = "Faktor bilangan dari " + $("#inputFaktorPrima").val() + " adalah " + isi[0] + "\n";
-			strIsi = strIsi + "Hasil perkalian = " + isi[1] + "\n";
-			strIsi = strIsi + "Faktor prima = " + isi[2] + "\n";
-			strIsi = strIsi + "Bentuk sederhana = " + isi[3];
-			//$(idElement).autosize();
-			//autosize($(idElement));
-			//$(idElement).removeClass().addClass("alert alert-success");
-		}
-	}
-
-	if (status == "Error") {
-		strIsi = status + ": " + isi;
-		if (noModul == "1" || noModul == "4" || noModul == "6") {
-			$(idElement).removeClass().addClass("alert alert-warning");
-		}
-	}
-
-	if ($(idElement).is("span")) {
-		$(idElement).html(strIsi);
-	} else if ($(idElement).is("textarea")) {
-		$(idElement).val(strIsi.toString());
-    }
-}
-
-// untuk modul 5: nama acak
-function OlahNamaAcak() {
-	let strJmlNama;
-	let strFormat;
-	let pilSambungAbdul;
-	let strSumber;
-	const lstSumber = [];
-
-	strFormat = $("#inputFormatNama").val();
-	strJmlNama = $('#jumlahNama').find(":selected").text();
-
-	if ($("#pilNamaNabi").is(":checked")){
-		lstSumber.push("1")
-	}
-	if ($("#pilNamaSahabat").is(":checked")){
-		lstSumber.push("2")
-	}
-	if ($("#pilNamaIslami").is(":checked")){
-		lstSumber.push("3")
-	}
-	if ($("#pilNamaLaki").is(":checked")){
-		lstSumber.push("4")
-	}
-	strSumber = lstSumber.join(",");
-
-	if ($("#pilNamaAbdul").is(":checked")) {
-		pilSambungAbdul = "1";
 	} else {
-		pilSambungAbdul = "0";
-	}
-	// modul?id=id&modul=5&isi=x%20x&sumber=4&jumlah=10&sambung=0
-	teksArgumen = encodeURIComponent(strFormat) + "&sumber=" + strSumber + "&jumlah=" + strJmlNama + "&sambung=" + pilSambungAbdul;
-	return teksArgumen;
+		// Success Handling per Module
+		switch (moduleNumber) {
+			case 1: // Cek Prima
+				const inputVal = $("#bilPrima").val();
+				const prefix = status === "Sukses" ? `Angka ${inputVal}` : "";
+				const resultText = json.isi === true ? "bilangan prima." : "bukan bilangan prima.";
+				displayContent = `${prefix}: ${resultText}`;
+				if (!isTextarea) {
+					$(elementId).addClass("alert alert-success");
+				}
+				break;
 
+			case 2: // Deret Prima
+				if (Array.isArray(isi)) {
+					displayContent = isi.join(", ");
+				}
+				break;
+
+			case 4: // Tulis Bilangan
+				if (displayContent === 'Data tidak ditemukan.') {
+					if (!isTextarea) {
+						$(elementId).addClass("alert alert-warning");
+					}
+				} else {
+					if ($("#pilihPenandaRibuan").is(":checked")) {
+						displayContent = parseInt(displayContent).toLocaleString();
+					}
+					if (!isTextarea) {
+						$(elementId).addClass("alert alert-success");
+					}
+				}
+				break;
+
+			case 5: // Nama Acak
+				if (Array.isArray(isi)) {
+					displayContent = isi.join("\r\n");
+				}
+				break;
+
+			case 6: // Jabat Tangan
+				if (status === "Sukses") {
+					displayContent = `Terdapat ${isi} jabat tangan dalam ${$("#jmlOrang").val()} orang.`;
+					if (!isTextarea) {
+						$(elementId).addClass("alert alert-success");
+					}
+				}
+				break;
+
+			case 7: // Faktorisasi Prima
+				if (status === "Sukses" && Array.isArray(isi)) {
+					displayContent = `Faktor bilangan dari ${$("#inputFaktorPrima").val()} adalah ${isi[0]}\n` +
+						`Hasil perkalian = ${isi[1]}\n` +
+						`Faktor prima = ${isi[2]}\n` +
+						`Bentuk sederhana = ${isi[3]}`;
+				}
+				break;
+
+			// Module 3 uses default displayContent
+		}
+	}
+
+	// Render logic
+	if ($(elementId).is("span") || $(elementId).is("div")) {
+		$(elementId).html(displayContent);
+	} else if ($(elementId).is("textarea")) {
+		$(elementId).val(displayContent.toString());
+	}
+}
+
+/**
+ * Helper to toggle button loading state
+ */
+function setLoadingState(btnId, isLoading) {
+	const btn = $(btnId);
+	if (!btn.length) return;
+
+	if (isLoading) {
+		const originalText = btn.val() || btn.text();
+		btn.data('original-text', originalText);
+		btn.prop('disabled', true);
+		btn.val('Loading...').text('Loading...');
+	} else {
+		const originalText = btn.data('original-text') || 'Proses';
+		btn.prop('disabled', false);
+		btn.val(originalText).text(originalText);
+	}
+}
+
+/**
+ * Helper for Module 5 (Random Name Generator) argument parsing
+ */
+function OlahNamaAcak() {
+	const strFormat = $("#inputFormatNama").val();
+	const strJmlNama = $('#jumlahNama').find(":selected").text();
+
+	const lstSumber = [];
+	if ($("#pilNamaNabi").is(":checked")) lstSumber.push("1");
+	if ($("#pilNamaSahabat").is(":checked")) lstSumber.push("2");
+	if ($("#pilNamaIslami").is(":checked")) lstSumber.push("3");
+	if ($("#pilNamaLaki").is(":checked")) lstSumber.push("4");
+
+	const strSumber = lstSumber.join(",");
+	const pilSambungAbdul = $("#pilNamaAbdul").is(":checked") ? "1" : "0";
+
+	return `${encodeURIComponent(strFormat)}&sumber=${strSumber}&jumlah=${strJmlNama}&sambung=${pilSambungAbdul}`;
 }

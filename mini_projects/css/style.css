@@ -4,34 +4,186 @@
 @import url('https://fonts.googleapis.com/css?family=Tajawal');
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
-section{
-	padding: 60px 0;
+/* CSS Variables for Theme */
+:root {
+    /* Light Theme */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-card: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #6c757d;
+    --accent-primary: #007b5e;
+    --accent-hover: #005f49;
+    --border-color: #e5e7eb;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --bg-tooltip: #1e293b;
+    --text-tooltip: #ffffff;
+}
+
+[data-theme="dark"] {
+    /* Dark Theme */
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-card: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --accent-primary: #06b6d4;
+    --accent-hover: #0891b2;
+    --border-color: #334155;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+    --bg-tooltip: #f1f5f9;
+    --text-tooltip: #0f172a;
+}
+
+/* Base Styles */
+body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+section {
+    padding: 60px 0;
+}
+
+/* Control Buttons */
+.controls {
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    gap: 0.75rem;
+    z-index: 1000;
+}
+
+.control-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+}
+
+.control-btn:hover {
+    background: var(--accent-primary);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.control-btn:active {
+    transform: translateY(0);
+}
+
+.lang-text {
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+/* Tooltip Styling */
+[data-tooltip-en],
+[data-tooltip-id] {
+    position: relative;
+}
+
+.control-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: var(--bg-tooltip);
+    color: var(--text-tooltip);
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    z-index: 1001;
+    pointer-events: none;
+}
+
+[lang="en"] .control-btn#langToggle::after {
+    content: attr(data-tooltip-en);
+}
+
+[lang="id"] .control-btn#langToggle::after {
+    content: attr(data-tooltip-id);
+}
+
+[lang="en"] .control-btn#themeToggle::after {
+    content: attr(data-tooltip-en);
+}
+
+[lang="id"] .control-btn#themeToggle::after {
+    content: attr(data-tooltip-id);
+}
+
+.control-btn:hover::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Accordion Theming */
+.bg-gray {
+    background: var(--bg-secondary) !important;
 }
 
 #accordion-style-1 h1,
-#accordion-style-1 a{
-    color:#007b5e;
+#accordion-style-1 a {
+    color: var(--accent-primary);
 }
+
 #accordion-style-1 .btn-link {
     font-weight: 400;
-    color: #007b5e;
+    color: var(--accent-primary);
     background-color: transparent;
     text-decoration: none !important;
     font-size: 16px;
     font-weight: bold;
-	padding-left: 25px;
+    padding-left: 25px;
+}
+
+#accordion-style-1 .card {
+    background: var(--bg-card);
+    border-color: var(--border-color);
 }
 
 #accordion-style-1 .card-body {
-    border-top: 2px solid #007b5e;
+    border-top: 2px solid var(--accent-primary);
+    background: var(--bg-card);
+    color: var(--text-primary);
 }
 
-#accordion-style-1 .card-header .btn.collapsed .fa.main{
-	display:none;
+#accordion-style-1 .card-header {
+    background: var(--bg-card);
+    border-color: var(--border-color);
 }
 
-#accordion-style-1 .card-header .btn .fa.main{
-	background: #007b5e;
+#accordion-style-1 .card-header .btn.collapsed .fa.main {
+    display: none;
+}
+
+#accordion-style-1 .card-header .btn .fa.main {
+    background: var(--accent-primary);
     padding: 13px 11px;
     color: #ffffff;
     width: 35px;
@@ -41,5 +193,130 @@ section{
     top: 10px;
     border-top-right-radius: 7px;
     border-bottom-right-radius: 7px;
-	display:block;
+    display: block;
+}
+
+/* Footer Theming */
+footer {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    color: var(--text-secondary);
+    margin-top: auto;
+}
+
+footer p {
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+/* Form Controls */
+.form-control,
+.form-select {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.form-control:focus,
+.form-select:focus {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 94, 0.25);
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+    box-shadow: 0 0 0 0.2rem rgba(6, 182, 212, 0.25);
+}
+
+/* Buttons */
+.btn-info {
+    background-color: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.btn-info:hover {
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
+}
+
+.btn-outline-info {
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.btn-outline-info:hover {
+    background-color: var(--accent-primary);
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .controls {
+        top: 1rem;
+        right: 1rem;
+        gap: 0.5rem;
+    }
+
+    .control-btn {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 0.9rem;
+    }
+
+    section {
+        padding: 40px 0;
+    }
+
+    #accordion-style-1 h1 {
+        font-size: 1.75rem;
+    }
+
+    .col-10 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    #accordion-style-1 .btn-link {
+        font-size: 14px;
+        padding-left: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .controls {
+        top: 0.75rem;
+        right: 0.75rem;
+    }
+
+    .control-btn {
+        width: 2.25rem;
+        height: 2.25rem;
+        font-size: 0.85rem;
+    }
+
+    #accordion-style-1 h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem !important;
+    }
+
+    .control-btn::after {
+        font-size: 0.65rem;
+        padding: 0.4rem 0.6rem;
+    }
+}
+
+/* Smooth Transitions */
+* {
+    transition-property: background-color, border-color, color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+}
+
+/* Prevent transition on page load */
+.preload * {
+    transition: none !important;
 }

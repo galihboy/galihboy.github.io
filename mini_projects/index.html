@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
+
 <head>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
@@ -8,12 +9,20 @@
 	<!--
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	-->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<script src="js/modul.js"></script>
+	<script src="js/theme-lang.js"></script>
 	<!-- CSS Only Accordion-->
 	<link rel="stylesheet" href="css/style.css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-212617993-2"></script>
 	<script>
@@ -26,6 +35,7 @@
 
 	<title>Galih Hermawan - Mini Projects</title>
 </head>
+
 <body>
 	<!-- Accordion -->
 	<div class="container-fluid bg-gray" id="accordion-style-1">
@@ -33,45 +43,85 @@
 			<section>
 				<div class="row">
 					<div class="col-12">
-						<h1 class="text-green mb-4 text-center">Koleksi Mini Projects - Galih Hermawan</h1>
+						<!-- Control Buttons -->
+						<div class="controls">
+							<button class="control-btn" id="langToggle" data-tooltip-en="Switch to Indonesian"
+								data-tooltip-id="Ganti ke Bahasa Inggris" aria-label="Toggle Language">
+								<span class="lang-text">EN</span>
+							</button>
+							<button class="control-btn" id="themeToggle" data-tooltip-en="Switch to Dark Mode"
+								data-tooltip-id="Ganti ke Mode Gelap" aria-label="Toggle Theme">
+								<i class="fas fa-sun"></i>
+							</button>
+						</div>
+						<h1 class="text-green mb-4 text-center" data-en="Mini Projects Collection - Galih Hermawan"
+							data-id="Koleksi Mini Projects - Galih Hermawan">Mini Projects Collection - Galih Hermawan
+						</h1>
+						<!-- Quick Navigation -->
+						<div class="quick-nav text-center mb-4">
+							<a href="https://galih.eu" class="btn btn-outline-info btn-sm mx-1">
+								<i class="fa fa-home"></i> <span data-en="Homepage" data-id="Beranda">Homepage</span>
+							</a>
+							<a href="https://blog.galih.eu" class="btn btn-outline-info btn-sm mx-1">
+								<i class="fa fa-pen"></i> Blog
+							</a>
+						</div>
 					</div>
 					<div class="col-10 mx-auto">
 						<div class="accordion" id="accordionExample">
 							<div class="card">
 								<div class="card-header" id="headingOne">
 									<h5 class="mb-0">
-										<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-											<i class="fa fa-plus main"></i><i class="fa fa-angle-double-right mr-3"></i>1. Bilangan Prima.
+										<button class="btn btn-link btn-block text-left" type="button"
+											data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
+											aria-controls="collapseOne">
+											<i class="fa fa-plus main"></i><i
+												class="fa fa-angle-double-right mr-3"></i>1. Bilangan Prima.
 										</button>
 									</h5>
 								</div>
 
-								<div id="collapseOne" class="collapse show fade" aria-labelledby="headingOne" data-parent="#accordionExample">
+								<div id="collapseOne" class="collapse show fade" aria-labelledby="headingOne"
+									data-parent="#accordionExample">
 									<div class="card-body">
 										<div class="container">
 											<div class="row">
 												<div class="span12">
-													<p>Silakan pilih <strong>Cek Bilangan</strong> untuk sekedar memeriksa apakah sebuah bilangan itu termasuk bilangan prima atau bukan. Dan pilih <strong>Deret Bilangan</strong> untuk membangkitkan deret bilangan prima dari nilai minimum hingga nilai maksimum yang ditentukan.</p>
+													<p>Silakan pilih <strong>Cek Bilangan</strong> untuk sekedar
+														memeriksa apakah sebuah bilangan itu termasuk bilangan prima
+														atau bukan. Dan pilih <strong>Deret Bilangan</strong> untuk
+														membangkitkan deret bilangan prima dari nilai minimum hingga
+														nilai maksimum yang ditentukan.</p>
 													<div class="card bg-light mb-3" style="max-width: 12rem;">
 														<div class="card-body">
-															<a href="https://blog.galih.eu/deret-bilangan-prima-dalam-python" target="_blank" class="btn btn-outline-info">Tutorial</a>
-															<a href="https://github.com/galihboy/py-mini-projects/tree/main/Deret_Prima" target="_blank" class="btn btn-outline-info">Kode</a>
+															<a href="https://blog.galih.eu/deret-bilangan-prima-dalam-python"
+																target="_blank"
+																class="btn btn-outline-info">Tutorial</a>
+															<a href="https://github.com/galihboy/py-mini-projects/tree/main/Deret_Prima"
+																target="_blank" class="btn btn-outline-info">Kode</a>
 														</div>
 													</div>
 													<strong><u>Demo.</u></strong> <br /><br />
 													<div id="tab" class="btn-group" data-toggle="buttons-radio">
-														<a href="#cekPrima" class="btn btn-light btn-sm active" data-toggle="tab">Cek Bilangan</a>
-														<a href="#deretPrima" class="btn btn-light btn-sm" data-toggle="tab">Deret Bilangan</a>
+														<a href="#cekPrima" class="btn btn-light btn-sm active"
+															data-toggle="tab">Cek Bilangan</a>
+														<a href="#deretPrima" class="btn btn-light btn-sm"
+															data-toggle="tab">Deret Bilangan</a>
 													</div>
 													<div class="tab-content">
 														<hr>
 														<div class="tab-pane active" id="cekPrima">
 															<form class="form-inline" id="formPrima">
 																<div class="input-group mb-3">
-																	<input type="text" class="form-control" id="bilPrima" placeholder="Masukkan angka">
+																	<input type="text" class="form-control"
+																		id="bilPrima" placeholder="Masukkan angka">
 																	<div class="input-group-append">
-																		<input type="button" class="btn btn-info" id="btnPrima" value="Cek" onclick="PilihModul(1)" />
-																		<input type="button" class="btn btn-warning" id="btnReset" value="Reset" onclick="$('#formPrima')[0].reset();" />
+																		<input type="button" class="btn btn-info"
+																			id="btnPrima" value="Cek"
+																			onclick="PilihModul(1)" />
+																		<input type="button" class="btn btn-warning"
+																			id="btnReset" value="Reset"
+																			onclick="$('#formPrima')[0].reset();" />
 																	</div>
 																</div>
 															</form>
@@ -80,16 +130,26 @@
 														<div class="tab-pane" id="deretPrima">
 															<form class="form-inline" id="formDeretPrima">
 																<div class="input-group mb-3">
-																	<input type="text" class="form-control" id="bilPrimaDeret1" placeholder="Angka minimum">
-																	<input type="text" class="form-control" id="bilPrimaDeret2" placeholder="Angka maksimum">
+																	<input type="text" class="form-control"
+																		id="bilPrimaDeret1" placeholder="Angka minimum">
+																	<input type="text" class="form-control"
+																		id="bilPrimaDeret2"
+																		placeholder="Angka maksimum">
 																	<div class="input-group-append">
-																		<input type="button" class="btn btn-info" id="btnDeretPrima" value="Cek" onclick="PilihModul(2)" />
-																		<input type="button" class="btn btn-warning" id="btnReset" value="Reset" onclick="$('#formDeretPrima')[0].reset();$('#outputPrimaDeret').val('');" />
+																		<input type="button" class="btn btn-info"
+																			id="btnDeretPrima" value="Cek"
+																			onclick="PilihModul(2)" />
+																		<input type="button" class="btn btn-warning"
+																			id="btnReset" value="Reset"
+																			onclick="$('#formDeretPrima')[0].reset();$('#outputPrimaDeret').val('');" />
 																	</div>
 																</div>
 															</form>
 															<div class="form-floating">
-																<textarea class="form-control" placeholder="Deret bilangan prima..." id="outputPrimaDeret" style="height: 100px"></textarea>
+																<textarea class="form-control"
+																	placeholder="Deret bilangan prima..."
+																	id="outputPrimaDeret"
+																	style="height: 100px"></textarea>
 															</div>
 														</div>
 													</div>
@@ -102,41 +162,56 @@
 							<div class="card">
 								<div class="card-header" id="headingTwo">
 									<h5 class="mb-0">
-										<button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-											<i class="fa fa-plus main"></i><i class="fa fa-angle-double-right mr-3"></i>2. Baca dan Tulis Lambang Bilangan.
+										<button class="btn btn-link collapsed btn-block text-left" type="button"
+											data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+											aria-controls="collapseTwo">
+											<i class="fa fa-plus main"></i><i
+												class="fa fa-angle-double-right mr-3"></i>2. Baca dan Tulis Lambang
+											Bilangan.
 										</button>
 									</h5>
 								</div>
-								<div id="collapseTwo" class="collapse fade" aria-labelledby="headingTwo" data-parent="#accordionExample">
+								<div id="collapseTwo" class="collapse fade" aria-labelledby="headingTwo"
+									data-parent="#accordionExample">
 									<div class="card-body">
 										<div class="container">
 											<div class="row">
 												<div class="span12">
 													<p>
 														<strong>Baca Bilangan.</strong> <br />
-														Digunakan untuk membaca bilangan dari angka ke dalam (ejaan) teks, misal:
-														<ul>
-															<li>12, dibaca: "dua belas"</li>
-															<li>1425, dibaca: "seribu empat ratus dua puluh lima"</li>
-														</ul>
-														<strong>Tulis Bilangan.</strong> <br />
-														Digunakan untuk menerjemahkan teks bilangan ke dalam angka (bilangan) faktual, misal:
-														<ul>
-															<li>"dua ratus sepuluh", diterjemahkan menjadi: 210</li>
-															<li>"sebelas ribu enam ratus tiga puluh", diterjemahkan menjadi: 11630</li>
-														</ul>
+														Digunakan untuk membaca bilangan dari angka ke dalam (ejaan)
+														teks, misal:
+													<ul>
+														<li>12, dibaca: "dua belas"</li>
+														<li>1425, dibaca: "seribu empat ratus dua puluh lima"</li>
+													</ul>
+													<strong>Tulis Bilangan.</strong> <br />
+													Digunakan untuk menerjemahkan teks bilangan ke dalam angka
+													(bilangan) faktual, misal:
+													<ul>
+														<li>"dua ratus sepuluh", diterjemahkan menjadi: 210</li>
+														<li>"sebelas ribu enam ratus tiga puluh", diterjemahkan menjadi:
+															11630</li>
+													</ul>
 													</p>
 													<div class="card bg-light mb-3" style="max-width: 30rem;">
 														<div class="card-body">
-															<a href="https://blog.galih.eu/membaca-lambang-bilangan-dalam-python-secara-bertahap" target="_blank" class="btn btn-outline-info">Tutorial baca bilangan</a>
-															<a href="https://blog.galih.eu/menerjemahkan-teks-bilangan-dalam-python-untuk-pemula" target="_blank" class="btn btn-outline-info">Tutorial tulis bilangan</a>
-															<a href="https://github.com/galihboy/Baca_Tulis_Bilangan" target="_blank" class="btn btn-outline-info">Kode</a>
+															<a href="https://blog.galih.eu/membaca-lambang-bilangan-dalam-python-secara-bertahap"
+																target="_blank" class="btn btn-outline-info">Tutorial
+																baca bilangan</a>
+															<a href="https://blog.galih.eu/menerjemahkan-teks-bilangan-dalam-python-untuk-pemula"
+																target="_blank" class="btn btn-outline-info">Tutorial
+																tulis bilangan</a>
+															<a href="https://github.com/galihboy/Baca_Tulis_Bilangan"
+																target="_blank" class="btn btn-outline-info">Kode</a>
 														</div>
 													</div>
 													<strong><u>Demo.</u></strong> <br /><br />
 													<div id="tab" class="btn-group" data-toggle="buttons-radio">
-														<a href="#bacaBilangan" class="btn btn-light btn-sm active" data-toggle="tab">Baca Bilangan</a>
-														<a href="#tulisBilangan" class="btn btn-light btn-sm" data-toggle="tab">Tulis Bilangan</a>
+														<a href="#bacaBilangan" class="btn btn-light btn-sm active"
+															data-toggle="tab">Baca Bilangan</a>
+														<a href="#tulisBilangan" class="btn btn-light btn-sm"
+															data-toggle="tab">Tulis Bilangan</a>
 													</div>
 
 													<div class="tab-content">
@@ -144,15 +219,24 @@
 														<div class="tab-pane active" id="bacaBilangan">
 															<form class="form-inline" id="formBacaBilangan">
 																<div class="input-group mb-3">
-																	<input type="text" class="form-control" id="inputBacaBilangan" placeholder="Masukkan angka">
+																	<input type="text" class="form-control"
+																		id="inputBacaBilangan"
+																		placeholder="Masukkan angka">
 																	<div class="input-group-append">
-																		<input type="button" class="btn btn-info" id="btnBacaBilangan" value="Baca" onclick="PilihModul(3)" />
-																		<input type="button" class="btn btn-warning" id="btnReset" value="Reset" onclick="$('#formBacaBilangan')[0].reset();$('#outputBacaBilangan').val('');" />
+																		<input type="button" class="btn btn-info"
+																			id="btnBacaBilangan" value="Baca"
+																			onclick="PilihModul(3)" />
+																		<input type="button" class="btn btn-warning"
+																			id="btnReset" value="Reset"
+																			onclick="$('#formBacaBilangan')[0].reset();$('#outputBacaBilangan').val('');" />
 																	</div>
 																</div>
 															</form>
 															<div class="form-floating">
-																<textarea class="form-control" placeholder="Luaran terjemah teks bilangan" id="outputBacaBilangan" style="height: 80px"></textarea>
+																<textarea class="form-control"
+																	placeholder="Luaran terjemah teks bilangan"
+																	id="outputBacaBilangan"
+																	style="height: 80px"></textarea>
 															</div>
 
 														</div>
@@ -162,20 +246,36 @@
 																	<div class="input-group">
 																		<div class="container">
 																			<div class="d-table-cell w-100">
-																				<textarea class="form-control" placeholder="Teks (latin) bilangan dalam bahasa Indonesia" id="inputTulisBilangan" style="height: 80px"></textarea>
+																				<textarea class="form-control"
+																					placeholder="Teks (latin) bilangan dalam bahasa Indonesia"
+																					id="inputTulisBilangan"
+																					style="height: 80px"></textarea>
 																			</div>
-																			<div class="d-table-cell align-top btn-group-sm btn-group-vertical">
-																				<input type="button" class="btn btn-info" id="btnTulisBilangan" value="Terjemah" onclick="PilihModul(4)" />
-																				<input type="button" class="btn btn-warning" id="btnReset" value="Reset" onclick="$('#inputTulisBilangan').val('');" />
+																			<div
+																				class="d-table-cell align-top btn-group-sm btn-group-vertical">
+																				<input type="button"
+																					class="btn btn-info"
+																					id="btnTulisBilangan"
+																					value="Terjemah"
+																					onclick="PilihModul(4)" />
+																				<input type="button"
+																					class="btn btn-warning"
+																					id="btnReset" value="Reset"
+																					onclick="$('#inputTulisBilangan').val('');" />
 																			</div>
 																			<div class="form-check">
-																				<input type="checkbox" class="form-check-input" id="pilihPenandaRibuan">
-																				<label class="form-check-label" for="pilihPenandaRibuan">
+																				<input type="checkbox"
+																					class="form-check-input"
+																					id="pilihPenandaRibuan">
+																				<label class="form-check-label"
+																					for="pilihPenandaRibuan">
 																					Penanda Ribuan
 																				</label>
 																			</div>
 																			<hr />
-																			<span id="outputTulisBilangan" class="alert alert-info">Hasil terjemah.</span>
+																			<span id="outputTulisBilangan"
+																				class="alert alert-info">Hasil
+																				terjemah.</span>
 																		</div>
 																	</div>
 																</div>
@@ -193,44 +293,57 @@
 							<div class="card">
 								<div class="card-header" id="headingThree">
 									<h5 class="mb-0">
-										<button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-											<i class="fa fa-plus main"></i><i class="fa fa-angle-double-right mr-3"></i>3. Membangkitkan Nama Acak.
+										<button class="btn btn-link collapsed btn-block text-left" type="button"
+											data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+											aria-controls="collapseThree">
+											<i class="fa fa-plus main"></i><i
+												class="fa fa-angle-double-right mr-3"></i>3. Membangkitkan Nama Acak.
 										</button>
 									</h5>
 
 								</div>
-								<div id="collapseThree" class="collapse fade" aria-labelledby="headingThree" data-parent="#accordionExample">
+								<div id="collapseThree" class="collapse fade" aria-labelledby="headingThree"
+									data-parent="#accordionExample">
 									<div class="card-body">
 										<p>
 											Dalam fitur ini Anda dapat menentukan dua parameter, yaitu:
-											<ol>
-												<li>
-													<b>Format nama</b><br />
-													Nama acak diwakilkan dengan simbol "X", dan sisanya dapat diganti dengan tetapan nama yang diinginkan, misal:
-													<ul>
-														<li>"X X" -> membangkitkan dua (kata) nama acak</li>
-														<li>"Budi X X Hermawan" -> membangkitkan dua nama acak di antara nama "Budi" dan "Hermawan"</li>
-														<li>"X Abdul X X" -> membangkitkan satu nama acak sebelum nama "Abdul", dan dua nama setelahnya.</li>
-													</ul>
-												</li>
-												<li><b>Jumlah nama</b> -> jumlah nama yang akan dibangkitkan.</li>
-												<li><b>Daftar sumber nama</b> -> terdapat 4 file teks berisi contoh nama sesuai kelompok yang dapat dipilih.</li>
-												<li><b>Sambung nama Abdul</b> -> khusus nama yang mengandung Abdul, apakah digabung nama asmaul husna atau tidak.</li>
-											</ol>
+										<ol>
+											<li>
+												<b>Format nama</b><br />
+												Nama acak diwakilkan dengan simbol "X", dan sisanya dapat diganti dengan
+												tetapan nama yang diinginkan, misal:
+												<ul>
+													<li>"X X" -> membangkitkan dua (kata) nama acak</li>
+													<li>"Budi X X Hermawan" -> membangkitkan dua nama acak di antara
+														nama "Budi" dan "Hermawan"</li>
+													<li>"X Abdul X X" -> membangkitkan satu nama acak sebelum nama
+														"Abdul", dan dua nama setelahnya.</li>
+												</ul>
+											</li>
+											<li><b>Jumlah nama</b> -> jumlah nama yang akan dibangkitkan.</li>
+											<li><b>Daftar sumber nama</b> -> terdapat 4 file teks berisi contoh nama
+												sesuai kelompok yang dapat dipilih.</li>
+											<li><b>Sambung nama Abdul</b> -> khusus nama yang mengandung Abdul, apakah
+												digabung nama asmaul husna atau tidak.</li>
+										</ol>
 										</p>
 										<div class="card bg-light mb-3" style="max-width: 12rem;">
 											<div class="card-body">
-												<a href="https://blog.galih.eu/pembangkit-nama-acak-otomatis-berbasis-aturan-menggunakan-python" target="_blank" class="btn btn-outline-info">Tutorial</a>
-												<a href="https://github.com/galihboy/Nama_Acak" target="_blank" class="btn btn-outline-info">Kode</a>
+												<a href="https://blog.galih.eu/pembangkit-nama-acak-otomatis-berbasis-aturan-menggunakan-python"
+													target="_blank" class="btn btn-outline-info">Tutorial</a>
+												<a href="https://github.com/galihboy/Nama_Acak" target="_blank"
+													class="btn btn-outline-info">Kode</a>
 											</div>
 										</div>
 										<strong><u>Demo.</u></strong> <br /><br />
 										<form class="form-inline" id="formNamaAcak">
 											<div class="form-group mb-2">
-												<input type="text" class="form-control" id="inputFormatNama" placeholder="Format nama">
+												<input type="text" class="form-control" id="inputFormatNama"
+													placeholder="Format nama">
 											</div>
 											<div class="form-group mx-sm-3 mb-2">
-												<select class="form-select" aria-label="Default select example" id="jumlahNama">
+												<select class="form-select" aria-label="Default select example"
+													id="jumlahNama">
 													<option selected>Jumlah nama</option>
 													<option value="1">1</option>
 													<option value="2">2</option>
@@ -245,8 +358,10 @@
 												</select>
 											</div>
 											<div class="btn-group btn-group-justified" role="group">
-												<input type="button" class="btn btn-info" id="btnBuatNama" value="Buat nama" onclick="PilihModul(5)" />
-												<input type="button" class="btn btn-warning" id="btnReset" value="Reset" onclick="$('#formNamaAcak')[0].reset();$('input[type=checkbox]').prop('checked',false);$('#outputDaftarNama').val('');" />
+												<input type="button" class="btn btn-info" id="btnBuatNama"
+													value="Buat nama" onclick="PilihModul(5)" />
+												<input type="button" class="btn btn-warning" id="btnReset" value="Reset"
+													onclick="$('#formNamaAcak')[0].reset();$('input[type=checkbox]').prop('checked',false);$('#outputDaftarNama').val('');" />
 											</div>
 										</form>
 
@@ -254,35 +369,43 @@
 										<span>Daftar sumber nama.</span>
 										<div class="form-group mb-2">
 											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="checkbox" id="pilNamaNabi" value="option1">
+												<input class="form-check-input" type="checkbox" id="pilNamaNabi"
+													value="option1">
 												<label class="form-check-label" for="pilNamaNabi">Nama Nabi</label>
 											</div>
 											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="checkbox" id="pilNamaSahabat" value="option2">
-												<label class="form-check-label" for="pilNamaSahabat">Nama Sahabat</label>
+												<input class="form-check-input" type="checkbox" id="pilNamaSahabat"
+													value="option2">
+												<label class="form-check-label" for="pilNamaSahabat">Nama
+													Sahabat</label>
 											</div>
 										</div>
 										<div class="form-group mb-2">
 											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="checkbox" id="pilNamaIslami" value="option1">
+												<input class="form-check-input" type="checkbox" id="pilNamaIslami"
+													value="option1">
 												<label class="form-check-label" for="pilNamaIslami">Nama Islami</label>
 											</div>
 											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="checkbox" id="pilNamaLaki" value="option2">
-												<label class="form-check-label" for="pilNamaLaki">Nama Laki-laki Umum</label>
+												<input class="form-check-input" type="checkbox" id="pilNamaLaki"
+													value="option2">
+												<label class="form-check-label" for="pilNamaLaki">Nama Laki-laki
+													Umum</label>
 											</div>
 										</div>
 										<div class="form-group mb-2">
 											<hr style="width: 350px; border-top: 2px dashed #095484; margin: 10px 0" />
 											<span>Nama Abdul (jika ada) disambung dengan Asmaul Husna?</span>
 											<div class="form-check">
-												<input class="form-check-input" type="checkbox" id="pilNamaAbdul" value="option1">
+												<input class="form-check-input" type="checkbox" id="pilNamaAbdul"
+													value="option1">
 												<label class="form-check-label" for="pilNamaAbdul">Disambung</label>
 											</div>
 										</div>
 										<hr />
 										<div class="form-floating">
-											<textarea class="form-control" placeholder="Daftar nama ..." id="outputDaftarNama" style="height: 80px;"></textarea>
+											<textarea class="form-control" placeholder="Daftar nama ..."
+												id="outputDaftarNama" style="height: 80px;"></textarea>
 										</div>
 									</div>
 								</div>
@@ -290,37 +413,46 @@
 							<div class="card">
 								<div class="card-header" id="headingEmpat">
 									<h5 class="mb-0">
-										<button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseEmpat" aria-expanded="false" aria-controls="collapseEmpat">
-											<i class="fa fa-plus main"></i><i class="fa fa-angle-double-right mr-3"></i>4. Hitung Jumlah Jabat Tangan.
+										<button class="btn btn-link collapsed btn-block text-left" type="button"
+											data-toggle="collapse" data-target="#collapseEmpat" aria-expanded="false"
+											aria-controls="collapseEmpat">
+											<i class="fa fa-plus main"></i><i
+												class="fa fa-angle-double-right mr-3"></i>4. Hitung Jumlah Jabat Tangan.
 										</button>
 									</h5>
 								</div>
-								<div id="collapseEmpat" class="collapse fade" aria-labelledby="headingEmpat" data-parent="#accordionExample">
+								<div id="collapseEmpat" class="collapse fade" aria-labelledby="headingEmpat"
+									data-parent="#accordionExample">
 									<div class="card-body">
 										<div class="container">
 											<div class="row">
 												<div class="span12">
 													<p>
-														Menghitung jumlah jabat tangan (salaman) yang mungkin terjadi dalam sejumlah orang.<br />
-														<ul>
-															<li>
-																2 orang = AB -> A-B (1x salaman)
-															</li>
-															<li>
-																3 orang = ABC -> A-B, A-C, B-C (3x salaman)
-															</li>
-															<li>
-																4 orang = ABCD -> A-B, A-C, A-D, B-C, B-D, C-D (6x salaman)
-															</li>
-															<li>
-																5 orang = ABCDE -> A-B, A-C, A-D, A-E, B-C, B-D, B-E, C-D, C-E, D-E (10x salaman)
-															</li>
-														</ul>
+														Menghitung jumlah jabat tangan (salaman) yang mungkin terjadi
+														dalam sejumlah orang.<br />
+													<ul>
+														<li>
+															2 orang = AB -> A-B (1x salaman)
+														</li>
+														<li>
+															3 orang = ABC -> A-B, A-C, B-C (3x salaman)
+														</li>
+														<li>
+															4 orang = ABCD -> A-B, A-C, A-D, B-C, B-D, C-D (6x salaman)
+														</li>
+														<li>
+															5 orang = ABCDE -> A-B, A-C, A-D, A-E, B-C, B-D, B-E, C-D,
+															C-E, D-E (10x salaman)
+														</li>
+													</ul>
 													</p>
 													<div class="card bg-light mb-3" style="max-width: 12rem;">
 														<div class="card-body">
-															<a href="https://blog.galih.eu/5-metode-menghitung-jumlah-jabat-tangan-salaman-menggunakan-python" target="_blank" class="btn btn-outline-info">Tutorial</a>
-															<a href="https://github.com/galihboy/py-mini-projects/tree/main/Jumlah_Jabat_Tangan" target="_blank" class="btn btn-outline-info">Kode</a>
+															<a href="https://blog.galih.eu/5-metode-menghitung-jumlah-jabat-tangan-salaman-menggunakan-python"
+																target="_blank"
+																class="btn btn-outline-info">Tutorial</a>
+															<a href="https://github.com/galihboy/py-mini-projects/tree/main/Jumlah_Jabat_Tangan"
+																target="_blank" class="btn btn-outline-info">Kode</a>
 														</div>
 													</div>
 													<strong><u>Demo.</u></strong> <br /><br />
@@ -329,10 +461,15 @@
 														<div class="tab-pane active" id="cekJmlSalaman">
 															<form class="form-inline" id="formJmlSalaman">
 																<div class="input-group mb-3">
-																	<input type="text" class="form-control" id="jmlOrang" placeholder="Angka jumlah orang">
+																	<input type="text" class="form-control"
+																		id="jmlOrang" placeholder="Angka jumlah orang">
 																	<div class="input-group-append">
-																		<input type="button" class="btn btn-info" id="btnJmlSalaman" value="Cek" onclick="PilihModul(6)" />
-																		<input type="button" class="btn btn-warning" id="btnReset" value="Reset" onclick="$('#formJmlSalaman')[0].reset();" />
+																		<input type="button" class="btn btn-info"
+																			id="btnJmlSalaman" value="Cek"
+																			onclick="PilihModul(6)" />
+																		<input type="button" class="btn btn-warning"
+																			id="btnReset" value="Reset"
+																			onclick="$('#formJmlSalaman')[0].reset();" />
 																	</div>
 																</div>
 															</form>
@@ -348,12 +485,16 @@
 							<div class="card">
 								<div class="card-header" id="headingLima">
 									<h5 class="mb-0">
-										<button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseLima" aria-expanded="false" aria-controls="collapseLima">
-											<i class="fa fa-plus main"></i><i class="fa fa-angle-double-right mr-3"></i>5. Faktorisasi Prima.
+										<button class="btn btn-link collapsed btn-block text-left" type="button"
+											data-toggle="collapse" data-target="#collapseLima" aria-expanded="false"
+											aria-controls="collapseLima">
+											<i class="fa fa-plus main"></i><i
+												class="fa fa-angle-double-right mr-3"></i>5. Faktorisasi Prima.
 										</button>
 									</h5>
 								</div>
-								<div id="collapseLima" class="collapse fade" aria-labelledby="headingLima" data-parent="#accordionExample">
+								<div id="collapseLima" class="collapse fade" aria-labelledby="headingLima"
+									data-parent="#accordionExample">
 									<div class="card-body">
 										<div class="container">
 											<div class="row">
@@ -363,8 +504,11 @@
 													</p>
 													<div class="card bg-light mb-3" style="max-width: 12rem;">
 														<div class="card-body">
-															<a href="https://blog.galih.eu/faktorisasi-atau-penguraian-bilangan-prima-dalam-python" target="_blank" class="btn btn-outline-info">Tutorial</a>
-															<a href="https://github.com/galihboy/py-mini-projects/tree/main/Faktor_Bilangan" target="_blank" class="btn btn-outline-info">Kode</a>
+															<a href="https://blog.galih.eu/faktorisasi-atau-penguraian-bilangan-prima-dalam-python"
+																target="_blank"
+																class="btn btn-outline-info">Tutorial</a>
+															<a href="https://github.com/galihboy/py-mini-projects/tree/main/Faktor_Bilangan"
+																target="_blank" class="btn btn-outline-info">Kode</a>
 														</div>
 													</div>
 													<div class="tab-content">
@@ -372,10 +516,16 @@
 														<strong><u>Demo.</u></strong> <br /><br />
 														<form class="form-inline" id="formFaktorPrima">
 															<div class="input-group mb-3">
-																<input type="text" class="form-control" id="inputFaktorPrima" placeholder="Bilangan bulat +">
+																<input type="text" class="form-control"
+																	id="inputFaktorPrima"
+																	placeholder="Bilangan bulat +">
 																<div class="input-group-append">
-																	<input type="button" class="btn btn-info" id="btnFaktorPrima" value="Proses" onclick="PilihModul(7)" />
-																	<input type="button" class="btn btn-warning" id="btnReset" value="Reset" onclick="$('#formFaktorPrima')[0].reset();$('#outputFaktorPrima').val('');" />
+																	<input type="button" class="btn btn-info"
+																		id="btnFaktorPrima" value="Proses"
+																		onclick="PilihModul(7)" />
+																	<input type="button" class="btn btn-warning"
+																		id="btnReset" value="Reset"
+																		onclick="$('#formFaktorPrima')[0].reset();$('#outputFaktorPrima').val('');" />
 																</div>
 															</div>
 														</form>
@@ -384,7 +534,8 @@
 											</div>
 										</div>
 										<div class="form-floating">
-											<textarea class="form-control" placeholder="Hasil faktorisasi prima" id="outputFaktorPrima" style="width:100%" rows="4"></textarea>
+											<textarea class="form-control" placeholder="Hasil faktorisasi prima"
+												id="outputFaktorPrima" style="width:100%" rows="4"></textarea>
 										</div>
 									</div>
 								</div>
@@ -392,12 +543,16 @@
 							<div class="card">
 								<div class="card-header" id="headingLain">
 									<h5 class="mb-0">
-										<button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-											<i class="fa fa-expeditedssl main"></i><i class="fa fa-angle-double-right mr-3"></i>6. Lain-lain.
+										<button class="btn btn-link collapsed btn-block text-left" type="button"
+											data-toggle="collapse" data-target="#collapseFour" aria-expanded="false"
+											aria-controls="collapseFour">
+											<i class="fa fa-expeditedssl main"></i><i
+												class="fa fa-angle-double-right mr-3"></i>6. Lain-lain.
 										</button>
 									</h5>
 								</div>
-								<div id="collapseFour" class="collapse fade" aria-labelledby="headingLain" data-parent="#accordionExample">
+								<div id="collapseFour" class="collapse fade" aria-labelledby="headingLain"
+									data-parent="#accordionExample">
 									<div class="card-body">
 										Upcoming...
 									</div>
@@ -411,69 +566,15 @@
 	</div>
 	<!-- .// Accordion -->
 
-	<footer class="bg-light text-center text-white">
-		<!-- Grid container -->
-		<div class="container p-0 pb-0">
-			<!-- Section: Social media -->
-			<section class="mb-4">
-				<a class="btn btn-primary btn-floating m-1"
-				   style="background-color: #00ff21;"
-				   href="https://galih.eu"
-				   role="button">
-					<i class="fa fa-home"></i>
-				</a>
-				<a class="btn btn-primary btn-floating m-1"
-				   style="background-color: #ffd800;"
-				   href="https://blog.galih.eu"
-				   role="button">
-					<i class="fa fa-angle-double-right"></i>
-				</a>
-				<!-- Twitter -->
-				<a class="btn btn-primary btn-floating m-1"
-				   style="background-color: #55acee;"
-				   href="https://twitter.com/_galihhermawan_"
-				   role="button">
-					<i class="fa fa-twitter"></i>
-				</a>
-				<!-- Medium -->
-				<a class="btn btn-primary btn-floating m-1"
-				   style="background-color: #333333;"
-				   href="https://masgalih.medium.com"
-				   role="button">
-					<i class="fa fa-medium"></i>
-				</a>
-				<!-- Linkedin -->
-				<a class="btn btn-primary btn-floating m-1"
-				   style="background-color: #0082ca;"
-				   href="https://id.linkedin.com/in/galih-hermawan"
-				   role="button">
-					<i class="fa fa-linkedin"></i>
-				</a>
-				<!-- Github -->
-				<a class="btn btn-primary btn-floating m-1"
-				   style="background-color: #333333;"
-				   href="https://github.com/galihboy"
-				   role="button">
-					<i class="fa fa-github"></i>
-				</a>
-				<!-- Youtube -->
-				<a class="btn btn-primary btn-floating m-1"
-				   style="background-color: #e83345;"
-				   href="https://www.youtube.com/channel/UCHt-UId8pNiWuAa6iAyLeyQ"
-				   role="button">
-					<i class="fa fa-youtube"></i>
-				</a>
-			</section>
-			<!-- Section: Social media -->
-		</div>
-		<!-- Grid container -->
-		<div class="text-right p-3"><span class="alert alert-info">Last update: 2021-12-01, 20.22</span></div>
-		<!-- Copyright -->
-		<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-			© 2021 Copyright.
-			<a class="text-white" href="https://galih.eu/">Galih Hermawan</a> · <a class="text-white" href="https://galihboy.github.io">Github Pages</a>.
-		</div>
-		<!-- Copyright -->
+	<footer>
+		<p>&copy; <span id="currentYear"></span> Galih Hermawan.
+			<span data-en="All rights reserved." data-id="Hak cipta dilindungi.">All rights reserved.</span>
+		</p>
 	</footer>
+	<script>
+		// Set current year in footer
+		document.getElementById('currentYear').textContent = new Date().getFullYear();
+	</script>
 </body>
+
 </html>
