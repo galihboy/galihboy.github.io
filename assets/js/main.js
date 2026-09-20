@@ -22,10 +22,12 @@ function updateThemeIcon(theme) {
 
 	if (theme === 'dark') {
 		icon.className = 'fas fa-sun';
+		themeToggle.setAttribute('aria-label', 'Switch to Light Mode');
 		themeToggle.setAttribute('data-tooltip-en', 'Switch to Light Mode');
 		themeToggle.setAttribute('data-tooltip-id', 'Ubah ke Mode Terang');
 	} else {
 		icon.className = 'fas fa-moon';
+		themeToggle.setAttribute('aria-label', 'Switch to Dark Mode');
 		themeToggle.setAttribute('data-tooltip-en', 'Switch to Dark Mode');
 		themeToggle.setAttribute('data-tooltip-id', 'Ubah ke Mode Gelap');
 	}
@@ -38,8 +40,10 @@ function updateLangText(lang) {
 
 	if (lang === 'en') {
 		langText.textContent = 'ID';
+		langToggle.setAttribute('aria-label', 'Switch to Indonesian');
 	} else {
 		langText.textContent = 'EN';
+		langToggle.setAttribute('aria-label', 'Ubah ke Bahasa Inggris');
 	}
 }
 
@@ -57,7 +61,180 @@ function updateLanguage(lang) {
 
 	// Update HTML lang attribute
 	document.documentElement.setAttribute('lang', lang);
+
+	if (document.getElementById('projectGallery')?.open) {
+		updateGalleryView();
+	}
 }
+
+const galleries = {
+	'scopustrack': {
+		title: { en: 'ScopusTrack', id: 'ScopusTrack' },
+		images: [
+			{
+				src: 'assets/images/projects/scopustrack.webp', width: 1440, height: 810,
+				alt: 'ScopusTrack interface showing journal status statistics and search tools',
+				title: { en: 'Overview', id: 'Ringkasan' },
+				description: { en: 'Overview of journal status statistics, recent changes, search, and subject browsing.', id: 'Ringkasan status jurnal, perubahan terbaru, pencarian, dan penelusuran berdasarkan bidang.' }
+			},
+			{
+				src: 'assets/images/projects/scopustrack-search.webp', width: 1440, height: 810,
+				alt: 'ScopusTrack journal search and filter interface',
+				title: { en: 'Journal Search', id: 'Pencarian Jurnal' },
+				description: { en: 'Search and filter sources by title, ISSN, publisher, status, and related metadata.', id: 'Pencarian dan penyaringan sumber berdasarkan judul, ISSN, penerbit, status, dan metadata terkait.' }
+			},
+			{
+				src: 'assets/images/projects/scopustrack-discontinued.webp', width: 1440, height: 810,
+				alt: 'ScopusTrack monitoring view for discontinued journal sources',
+				title: { en: 'Discontinued Sources', id: 'Sumber Dihentikan' },
+				description: { en: 'Monitoring view for discontinued sources, including reason and year of change.', id: 'Tampilan pemantauan sumber yang dihentikan, termasuk alasan dan tahun perubahan.' }
+			}
+		]
+	},
+	'dp3m': {
+		title: { en: 'DP3M Monitoring', id: 'DP3M Monitoring' },
+		images: [
+			{
+				src: 'assets/images/projects/dp3m-eligibility.webp', width: 888, height: 1190,
+				alt: 'DP3M eligibility interface showing research grant eligibility criteria and status',
+				title: { en: 'Individual Eligibility', id: 'Eligibilitas Individu' },
+				description: { en: 'Lecturers can review eligible research schemes together with the evaluation context, eligibility status, and explainable criteria.', id: 'Dosen dapat melihat skema penelitian yang dapat diikuti beserta konteks evaluasi, status kelayakan, dan kriteria yang dapat ditelusuri.' }
+			},
+			{
+				src: 'assets/images/projects/dp3m-dashboard.webp', width: 1145, height: 1450,
+				alt: 'DP3M aggregate dashboard showing research scheme readiness and faculty eligibility patterns',
+				title: { en: 'Institutional Monitoring', id: 'Monitoring Institusi' },
+				description: { en: 'An aggregate dashboard for monitoring eligibility patterns and research-scheme readiness at the institutional level.', id: 'Dashboard agregat untuk memantau pola kelayakan dan kesiapan skema penelitian pada tingkat institusi.' }
+			}
+		]
+	},
+	'ml-demo': {
+		title: { en: 'Machine Learning Demo', id: 'Machine Learning Demo' },
+		images: [
+			{
+				src: 'assets/images/projects/ml-demo.webp', width: 1440, height: 810,
+				alt: 'Interactive linear regression demo showing training controls, data points, and fitted regression line',
+				title: { en: 'Linear Regression', id: 'Regresi Linear' },
+				description: { en: 'Interactive linear regression training with adjustable parameters, generated data, and fitted regression line.', id: 'Simulasi pelatihan regresi linear dengan parameter yang dapat diatur, data simulasi, dan garis regresi hasil training.' }
+			},
+			{
+				src: 'assets/images/projects/ml-demo-overview.webp', width: 1440, height: 810,
+				alt: 'Machine Learning Demo collection of interactive supervised learning demonstrations',
+				title: { en: 'Demo Collection', id: 'Kumpulan Demo' },
+				description: { en: 'The teaching application provides interactive demonstrations for several supervised learning algorithms.', id: 'Aplikasi pembelajaran menyediakan demonstrasi interaktif untuk beberapa algoritma supervised learning.' }
+			},
+			{
+				src: 'assets/images/projects/ml-demo-knn.webp', width: 1440, height: 810,
+				alt: 'Interactive K-nearest neighbors visualization with a two-dimensional feature space',
+				title: { en: 'K-Nearest Neighbors', id: 'K-Nearest Neighbors' },
+				description: { en: 'Interactive KNN visualization designed to explain classification using two-dimensional feature space.', id: 'Visualisasi KNN interaktif untuk menjelaskan proses klasifikasi menggunakan ruang fitur dua dimensi.' }
+			}
+		]
+	}
+};
+
+const galleryDialog = document.getElementById('projectGallery');
+const galleryTitle = document.getElementById('galleryTitle');
+const galleryImage = document.getElementById('galleryImage');
+const galleryCaptionTitle = document.getElementById('galleryCaptionTitle');
+const galleryCaptionDescription = document.getElementById('galleryCaptionDescription');
+const galleryThumbnails = document.getElementById('galleryThumbnails');
+const galleryPrevious = document.getElementById('galleryPrevious');
+const galleryNext = document.getElementById('galleryNext');
+const galleryClose = document.getElementById('galleryClose');
+let activeGallery = null;
+let activeImageIndex = 0;
+let galleryOpener = null;
+
+function currentLanguage() {
+	return document.documentElement.getAttribute('lang') || 'en';
+}
+
+function updateGalleryView() {
+	if (!activeGallery) return;
+
+	const language = currentLanguage();
+	const gallery = galleries[activeGallery];
+	const image = gallery.images[activeImageIndex];
+	const hasMultipleImages = gallery.images.length > 1;
+
+	galleryTitle.textContent = gallery.title[language];
+	galleryImage.src = image.src;
+	galleryImage.width = image.width;
+	galleryImage.height = image.height;
+	galleryImage.alt = image.alt;
+	galleryCaptionTitle.textContent = image.title[language];
+	galleryCaptionDescription.textContent = image.description[language];
+	galleryClose.setAttribute('aria-label', language === 'id' ? 'Tutup galeri' : 'Close gallery');
+	galleryPrevious.hidden = !hasMultipleImages;
+	galleryNext.hidden = !hasMultipleImages;
+	galleryPrevious.querySelector('span').textContent = language === 'id' ? 'Sebelumnya' : 'Previous';
+	galleryNext.querySelector('span').textContent = language === 'id' ? 'Berikutnya' : 'Next';
+
+	galleryThumbnails.replaceChildren();
+	if (!hasMultipleImages) {
+		galleryThumbnails.hidden = true;
+		return;
+	}
+
+	galleryThumbnails.hidden = false;
+	gallery.images.forEach((thumbnail, index) => {
+		const button = document.createElement('button');
+		const thumbnailImage = document.createElement('img');
+		button.type = 'button';
+		button.className = 'gallery-thumbnail';
+		button.setAttribute('aria-current', String(index === activeImageIndex));
+		button.setAttribute('aria-label', `${language === 'id' ? 'Lihat' : 'View'} ${thumbnail.title[language]}`);
+		thumbnailImage.src = thumbnail.src;
+		thumbnailImage.width = thumbnail.width;
+		thumbnailImage.height = thumbnail.height;
+		thumbnailImage.alt = '';
+		button.append(thumbnailImage);
+		button.addEventListener('click', () => {
+			activeImageIndex = index;
+			updateGalleryView();
+		});
+		galleryThumbnails.append(button);
+	});
+}
+
+function openGallery(project, opener) {
+	activeGallery = project;
+	activeImageIndex = 0;
+	galleryOpener = opener;
+	updateGalleryView();
+	galleryDialog.showModal();
+	galleryClose.focus();
+}
+
+function moveGallery(step) {
+	const images = galleries[activeGallery].images;
+	activeImageIndex = (activeImageIndex + step + images.length) % images.length;
+	updateGalleryView();
+}
+
+document.querySelectorAll('[data-gallery-open]').forEach(opener => {
+	opener.addEventListener('click', () => openGallery(opener.dataset.galleryOpen, opener));
+});
+
+galleryPrevious.addEventListener('click', () => moveGallery(-1));
+galleryNext.addEventListener('click', () => moveGallery(1));
+galleryClose.addEventListener('click', () => galleryDialog.close());
+
+galleryDialog.addEventListener('keydown', event => {
+	if (event.key === 'ArrowLeft' && galleries[activeGallery].images.length > 1) {
+		event.preventDefault();
+		moveGallery(-1);
+	}
+	if (event.key === 'ArrowRight' && galleries[activeGallery].images.length > 1) {
+		event.preventDefault();
+		moveGallery(1);
+	}
+});
+
+galleryDialog.addEventListener('close', () => {
+	galleryOpener?.focus();
+});
 
 // Theme Toggle
 document.getElementById('themeToggle').addEventListener('click', () => {
@@ -86,7 +263,6 @@ updateLanguage(initLang);
 
 // Update current year in footer
 document.getElementById('currentYear').textContent = new Date().getFullYear();
-
 // Smooth scroll for anchor links (if any added in future)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 	anchor.addEventListener('click', function (e) {
@@ -100,23 +276,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 		}
 	});
 });
-
-// Add keyboard shortcuts
-document.addEventListener('keydown', (e) => {
-	// Ctrl/Cmd + K for theme toggle
-	if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-		e.preventDefault();
-		document.getElementById('themeToggle').click();
-	}
-
-	// Ctrl/Cmd + L for language toggle
-	if ((e.ctrlKey || e.metaKey) && e.key === 'l') {
-		e.preventDefault();
-		document.getElementById('langToggle').click();
-	}
-});
-
-// Log initialization for debugging
-console.log('🎨 Theme:', initTheme);
-console.log('🌍 Language:', initLang);
-console.log('✨ Homepage initialized successfully!');
