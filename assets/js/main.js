@@ -19,15 +19,16 @@ document.documentElement.setAttribute('data-theme', initTheme);
 function updateThemeIcon(theme) {
 	const themeToggle = document.getElementById('themeToggle');
 	const icon = themeToggle.querySelector('i');
+	const language = currentLanguage();
 
 	if (theme === 'dark') {
 		icon.className = 'fas fa-sun';
-		themeToggle.setAttribute('aria-label', 'Switch to Light Mode');
+		themeToggle.setAttribute('aria-label', language === 'id' ? 'Ubah ke Mode Terang' : 'Switch to Light Mode');
 		themeToggle.setAttribute('data-tooltip-en', 'Switch to Light Mode');
 		themeToggle.setAttribute('data-tooltip-id', 'Ubah ke Mode Terang');
 	} else {
 		icon.className = 'fas fa-moon';
-		themeToggle.setAttribute('aria-label', 'Switch to Dark Mode');
+		themeToggle.setAttribute('aria-label', language === 'id' ? 'Ubah ke Mode Gelap' : 'Switch to Dark Mode');
 		themeToggle.setAttribute('data-tooltip-en', 'Switch to Dark Mode');
 		themeToggle.setAttribute('data-tooltip-id', 'Ubah ke Mode Gelap');
 	}
@@ -59,8 +60,13 @@ function updateLanguage(lang) {
 		}
 	});
 
+	document.querySelectorAll('[data-aria-en][data-aria-id]').forEach(element => {
+		element.setAttribute('aria-label', element.getAttribute(lang === 'en' ? 'data-aria-en' : 'data-aria-id'));
+	});
+
 	// Update HTML lang attribute
 	document.documentElement.setAttribute('lang', lang);
+	updateThemeIcon(document.documentElement.getAttribute('data-theme'));
 
 	if (document.getElementById('projectGallery')?.open) {
 		updateGalleryView();
@@ -73,19 +79,19 @@ const galleries = {
 		images: [
 			{
 				src: 'assets/images/projects/scopustrack.webp', width: 1440, height: 810,
-				alt: 'ScopusTrack interface showing journal status statistics and search tools',
+				alt: { en: 'ScopusTrack interface showing journal status statistics and search tools', id: 'Antarmuka ScopusTrack yang menampilkan statistik status jurnal dan alat pencarian' },
 				title: { en: 'Overview', id: 'Ringkasan' },
 				description: { en: 'Overview of journal status statistics, recent changes, search, and subject browsing.', id: 'Ringkasan status jurnal, perubahan terbaru, pencarian, dan penelusuran berdasarkan bidang.' }
 			},
 			{
 				src: 'assets/images/projects/scopustrack-search.webp', width: 1440, height: 810,
-				alt: 'ScopusTrack journal search and filter interface',
+				alt: { en: 'ScopusTrack journal search and filter interface', id: 'Antarmuka pencarian dan penyaringan jurnal ScopusTrack' },
 				title: { en: 'Journal Search', id: 'Pencarian Jurnal' },
 				description: { en: 'Search and filter sources by title, ISSN, publisher, status, and related metadata.', id: 'Pencarian dan penyaringan sumber berdasarkan judul, ISSN, penerbit, status, dan metadata terkait.' }
 			},
 			{
 				src: 'assets/images/projects/scopustrack-discontinued.webp', width: 1440, height: 810,
-				alt: 'ScopusTrack monitoring view for discontinued journal sources',
+				alt: { en: 'ScopusTrack monitoring view for discontinued journal sources', id: 'Tampilan pemantauan sumber jurnal yang dihentikan di ScopusTrack' },
 				title: { en: 'Discontinued Sources', id: 'Sumber Dihentikan' },
 				description: { en: 'Monitoring view for discontinued sources, including reason and year of change.', id: 'Tampilan pemantauan sumber yang dihentikan, termasuk alasan dan tahun perubahan.' }
 			}
@@ -96,13 +102,13 @@ const galleries = {
 		images: [
 			{
 				src: 'assets/images/projects/dp3m-eligibility.webp', width: 888, height: 1190,
-				alt: 'DP3M eligibility interface showing research grant eligibility criteria and status',
+				alt: { en: 'DP3M eligibility interface showing research grant eligibility criteria and status', id: 'Antarmuka eligibilitas DP3M yang menampilkan kriteria dan status kelayakan hibah penelitian' },
 				title: { en: 'Individual Eligibility', id: 'Eligibilitas Individu' },
 				description: { en: 'Lecturers can review eligible research schemes together with the evaluation context, eligibility status, and explainable criteria.', id: 'Dosen dapat melihat skema penelitian yang dapat diikuti beserta konteks evaluasi, status kelayakan, dan kriteria yang dapat ditelusuri.' }
 			},
 			{
 				src: 'assets/images/projects/dp3m-dashboard.webp', width: 1145, height: 1450,
-				alt: 'DP3M aggregate dashboard showing research scheme readiness and faculty eligibility patterns',
+				alt: { en: 'DP3M aggregate dashboard showing research scheme readiness and faculty eligibility patterns', id: 'Dashboard agregat DP3M yang menampilkan kesiapan skema penelitian dan pola kelayakan fakultas' },
 				title: { en: 'Institutional Monitoring', id: 'Monitoring Institusi' },
 				description: { en: 'An aggregate dashboard for monitoring eligibility patterns and research-scheme readiness at the institutional level.', id: 'Dashboard agregat untuk memantau pola kelayakan dan kesiapan skema penelitian pada tingkat institusi.' }
 			}
@@ -113,19 +119,19 @@ const galleries = {
 		images: [
 			{
 				src: 'assets/images/projects/ml-demo.webp', width: 1440, height: 810,
-				alt: 'Interactive linear regression demo showing training controls, data points, and fitted regression line',
+				alt: { en: 'Interactive linear regression demo showing training controls, data points, and fitted regression line', id: 'Demo regresi linear interaktif yang menampilkan kontrol training, titik data, dan garis regresi hasil training' },
 				title: { en: 'Linear Regression', id: 'Regresi Linear' },
 				description: { en: 'Interactive linear regression training with adjustable parameters, generated data, and fitted regression line.', id: 'Simulasi pelatihan regresi linear dengan parameter yang dapat diatur, data simulasi, dan garis regresi hasil training.' }
 			},
 			{
 				src: 'assets/images/projects/ml-demo-overview.webp', width: 1440, height: 810,
-				alt: 'Machine Learning Demo collection of interactive supervised learning demonstrations',
+				alt: { en: 'Machine Learning Demo collection of interactive supervised learning demonstrations', id: 'Kumpulan demo interaktif supervised learning pada Machine Learning Demo' },
 				title: { en: 'Demo Collection', id: 'Kumpulan Demo' },
 				description: { en: 'The teaching application provides interactive demonstrations for several supervised learning algorithms.', id: 'Aplikasi pembelajaran menyediakan demonstrasi interaktif untuk beberapa algoritma supervised learning.' }
 			},
 			{
 				src: 'assets/images/projects/ml-demo-knn.webp', width: 1440, height: 810,
-				alt: 'Interactive K-nearest neighbors visualization with a two-dimensional feature space',
+				alt: { en: 'Interactive K-nearest neighbors visualization with a two-dimensional feature space', id: 'Visualisasi K-nearest neighbors interaktif dengan ruang fitur dua dimensi' },
 				title: { en: 'K-Nearest Neighbors', id: 'K-Nearest Neighbors' },
 				description: { en: 'Interactive KNN visualization designed to explain classification using two-dimensional feature space.', id: 'Visualisasi KNN interaktif untuk menjelaskan proses klasifikasi menggunakan ruang fitur dua dimensi.' }
 			}
@@ -162,7 +168,7 @@ function updateGalleryView() {
 	galleryImage.src = image.src;
 	galleryImage.width = image.width;
 	galleryImage.height = image.height;
-	galleryImage.alt = image.alt;
+	galleryImage.alt = image.alt[language];
 	galleryCaptionTitle.textContent = image.title[language];
 	galleryCaptionDescription.textContent = image.description[language];
 	galleryClose.setAttribute('aria-label', language === 'id' ? 'Tutup galeri' : 'Close gallery');
