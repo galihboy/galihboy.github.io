@@ -136,6 +136,29 @@ const galleries = {
 				description: { en: 'Interactive KNN visualization designed to explain classification using two-dimensional feature space.', id: 'Visualisasi KNN interaktif untuk menjelaskan proses klasifikasi menggunakan ruang fitur dua dimensi.' }
 			}
 		]
+	},
+	'monitoring-proksi': {
+		title: { en: 'Monitoring Proksi', id: 'Monitoring Proksi' },
+		images: [
+			{
+				src: 'assets/images/projects/monitoring-proksi.webp', width: 1800, height: 982,
+				alt: { en: 'Monitoring Proksi LLM batch analysis showing semantic similarity scores, LLM verdicts, and analysis results', id: 'Analisis batch LLM Monitoring Proksi yang menampilkan skor kemiripan semantik, keputusan LLM, dan hasil analisis' },
+				title: { en: 'LLM Batch Analysis', id: 'Analisis Batch LLM' },
+				description: { en: 'High-similarity proposal pairs are screened with semantic embeddings, then analyzed by Gemini to produce scores, verdicts, explanations, and suggestions.', id: 'Pasangan proposal dengan kemiripan tinggi disaring menggunakan embedding semantik, lalu dianalisis Gemini untuk menghasilkan skor, keputusan, penjelasan, dan saran.' }
+			},
+			{
+				src: 'assets/images/projects/monitoring-proksi-semantic.webp', width: 1800, height: 982,
+				alt: { en: 'Monitoring Proksi semantic similarity interface comparing thesis proposals using multilingual embeddings', id: 'Antarmuka kemiripan semantik Monitoring Proksi yang membandingkan proposal skripsi menggunakan embedding multibahasa' },
+				title: { en: 'Semantic Similarity', id: 'Kemiripan Semantik' },
+				description: { en: 'Multilingual sentence embeddings compare proposal meaning beyond lexical overlap using semantic similarity.', id: 'Embedding kalimat multibahasa membandingkan makna proposal melampaui kemiripan kata secara leksikal.' }
+			},
+			{
+				src: 'assets/images/projects/monitoring-proksi-dashboard.webp', width: 1800, height: 982,
+				alt: { en: 'Monitoring Proksi dashboard showing thesis proposal submission and supervision statistics', id: 'Dashboard Monitoring Proksi yang menampilkan statistik pengajuan proposal skripsi dan bimbingan' },
+				title: { en: 'Proposal Monitoring Dashboard', id: 'Dashboard Monitoring Proposal' },
+				description: { en: 'A monitoring dashboard connected to Google Sheets for proposal submissions, supervision workload, topic trends, and submission status.', id: 'Dashboard monitoring yang terhubung ke Google Sheets untuk memantau proposal, beban bimbingan, tren topik, dan status pengumpulan.' }
+			}
+		]
 	}
 };
 
