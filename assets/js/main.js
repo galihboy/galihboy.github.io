@@ -250,6 +250,19 @@ galleryPrevious.addEventListener('click', () => moveGallery(-1));
 galleryNext.addEventListener('click', () => moveGallery(1));
 galleryClose.addEventListener('click', () => galleryDialog.close());
 
+galleryDialog.addEventListener('click', event => {
+	const rect = galleryDialog.getBoundingClientRect();
+	const clickedOutside =
+		event.clientX < rect.left ||
+		event.clientX > rect.right ||
+		event.clientY < rect.top ||
+		event.clientY > rect.bottom;
+
+	if (clickedOutside) {
+		galleryDialog.close();
+	}
+});
+
 galleryDialog.addEventListener('keydown', event => {
 	if (event.key === 'ArrowLeft' && galleries[activeGallery].images.length > 1) {
 		event.preventDefault();

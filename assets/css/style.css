@@ -857,6 +857,9 @@ button:focus-visible {
 }
 
 .project-gallery {
+	position: fixed;
+	inset: 0;
+	margin: auto;
 	width: min(92vw, 75rem);
 	max-width: none;
 	max-height: 92vh;
