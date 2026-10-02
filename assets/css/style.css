@@ -1291,11 +1291,12 @@ button:focus-visible {
 	}
 
 	.more-projects-ticker.is-animated {
-		overflow-x: auto;
+		overflow: hidden;
 	}
 
 	.more-projects-ticker.is-animated .more-projects-track {
-		animation: none;
+		width: max-content;
+		animation: more-projects-scroll 60s linear infinite;
 	}
 
 	.more-projects-ticker::-webkit-scrollbar {
@@ -1314,6 +1315,10 @@ button:focus-visible {
 
 	.more-projects-group-clone {
 		display: none;
+	}
+
+	.more-projects-ticker.is-animated .more-projects-group-clone {
+		display: flex;
 	}
 
 	.more-project-card {
@@ -1394,6 +1399,10 @@ button:focus-visible {
 	}
 
 	.more-projects-group-clone {
+		display: none;
+	}
+
+	.more-projects-ticker.is-animated .more-projects-group-clone {
 		display: none;
 	}
 }
