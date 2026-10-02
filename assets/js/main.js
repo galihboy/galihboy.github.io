@@ -298,7 +298,27 @@ document.getElementById('langToggle').addEventListener('click', () => {
 	updateLangText(newLang);
 });
 
+// Create one visual-only clone for the desktop ticker loop.
+function setupMoreProjectsTicker() {
+	const ticker = document.querySelector('.more-projects-ticker');
+	const canonicalGroup = ticker?.querySelector('.more-projects-group');
+
+	if (!ticker || !canonicalGroup || ticker.querySelector('.more-projects-group-clone')) {
+		return;
+	}
+
+	const clone = canonicalGroup.cloneNode(true);
+	clone.classList.add('more-projects-group-clone');
+	clone.setAttribute('aria-hidden', 'true');
+	clone.querySelectorAll('a').forEach(link => {
+		link.setAttribute('tabindex', '-1');
+	});
+	canonicalGroup.parentElement.appendChild(clone);
+	ticker.classList.add('is-animated');
+}
+
 // Initialize on page load
+setupMoreProjectsTicker();
 updateThemeIcon(initTheme);
 updateLangText(initLang);
 updateLanguage(initLang);
