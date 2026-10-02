@@ -53,7 +53,7 @@
     </script>
 </head>
 
-<body>
+<body id="top">
     <!-- Header Controls -->
     <header class="controls">
         <button id="langToggle" class="control-btn" aria-label="Switch to Indonesian" data-tooltip-en="Switch to Indonesian"
@@ -98,8 +98,17 @@
             </nav>
         </section>
 
+        <nav class="section-nav" aria-label="Page sections" data-aria-en="Page sections" data-aria-id="Bagian halaman">
+            <a href="#projects"><span data-en="Projects" data-id="Proyek">Projects</span></a>
+            <a href="#collaboration"><span data-en="Collaboration" data-id="Kolaborasi">Collaboration</span></a>
+            <a href="#profiles"><span data-en="Profiles" data-id="Profil">Profiles</span></a>
+            <a href="#writing"><span data-en="Writing" data-id="Tulisan">Writing</span></a>
+            <a href="#contact"><span data-en="Contact" data-id="Kontak">Contact</span></a>
+        </nav>
+
         <!-- Featured Projects -->
-        <section id="projects" class="content-section" aria-labelledby="projects-title">
+        <section id="projects" class="content-section section-frame" aria-labelledby="projects-title">
+            <span class="chapter-marker" aria-hidden="true"><i class="fas fa-layer-group"></i></span>
             <div class="section-heading">
                 <p class="eyebrow" data-en="Selected work" data-id="Karya pilihan">Selected work</p>
                 <h2 id="projects-title" class="section-title" data-en="Featured Projects" data-id="Proyek Pilihan">Featured Projects</h2>
@@ -177,7 +186,8 @@
         </section>
 
         <!-- Collaboration Section -->
-        <section id="collaboration" class="content-section collaboration-section" aria-labelledby="collaboration-title">
+        <section id="collaboration" class="content-section collaboration-section section-frame" aria-labelledby="collaboration-title">
+            <span class="chapter-marker" aria-hidden="true"><i class="fas fa-handshake"></i></span>
             <div class="section-heading">
                 <p class="eyebrow" data-en="Open to meaningful work" data-id="Terbuka untuk kolaborasi">Open to meaningful work</p>
                 <h2 id="collaboration-title" class="section-title" data-en="Work With Me" data-id="Kolaborasi">Work With Me</h2>
@@ -188,6 +198,10 @@
                 <article class="collaboration-card collaboration-development"><i class="fas fa-code" aria-hidden="true"></i><h3 data-en="Prototype & Application Development" data-id="Pengembangan Prototipe & Aplikasi">Prototype & Application Development</h3><p data-en="Research prototypes, AI/data-enabled web applications, dashboards, internal applications, and proofs of concept." data-id="Prototipe riset, aplikasi web berbasis AI/data, dashboard, aplikasi internal, dan proof of concept.">Research prototypes, AI/data-enabled web applications, dashboards, internal applications, and proofs of concept.</p></article>
             </div>
         </section>
+
+        <!-- Profiles Chapter -->
+        <div id="profiles" class="section-frame section-group">
+            <span class="chapter-marker" aria-hidden="true"><i class="fas fa-graduation-cap"></i></span>
 
         <!-- Academic Profiles Section -->
         <section class="links-section secondary-section">
@@ -244,7 +258,7 @@
             </div>
         </section>
 
-        <!-- Professional, Writing, and Social Links -->
+        <!-- Professional Section -->
         <section class="links-section secondary-section">
             <h2 class="section-title" data-en="Professional" data-id="Profesional">Professional</h2>
             <div class="links-grid">
@@ -265,6 +279,12 @@
                 </a>
             </div>
         </section>
+
+        </div>
+
+        <!-- Writing Chapter -->
+        <div id="writing" class="section-frame section-group">
+            <span class="chapter-marker" aria-hidden="true"><i class="fas fa-pen-nib"></i></span>
 
         <section class="links-section secondary-section">
             <h2 class="section-title" data-en="Writing & Experiments" data-id="Tulisan & Eksperimen">Writing & Experiments</h2>
@@ -310,8 +330,11 @@
             </div>
         </section>
 
+        </div>
+
         <!-- Contact Section -->
-        <section id="contact" class="content-section contact-section" aria-labelledby="contact-title">
+        <section id="contact" class="content-section contact-section section-frame" aria-labelledby="contact-title">
+            <span class="chapter-marker" aria-hidden="true"><i class="fas fa-paper-plane"></i></span>
             <div class="section-heading">
                 <p class="eyebrow" data-en="Get in touch" data-id="Hubungi saya">Get in touch</p>
                 <h2 id="contact-title" class="section-title" data-en="Contact" data-id="Kontak">Contact</h2>
@@ -355,9 +378,19 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; <span id="currentYear"></span> Galih Hermawan.
-            <span data-en="All rights reserved." data-id="Hak cipta dilindungi.">All rights reserved.</span>
-        </p>
+        <div class="footer-inner">
+            <p class="footer-name">Galih Hermawan</p>
+            <p class="footer-role" data-en="Lecturer · Researcher · Practitioner" data-id="Dosen · Peneliti · Praktisi">Lecturer · Researcher · Practitioner</p>
+            <nav class="footer-nav" aria-label="Footer navigation" data-aria-en="Footer navigation" data-aria-id="Navigasi footer">
+                <a href="#projects"><span data-en="Projects" data-id="Proyek">Projects</span></a>
+                <a href="#collaboration"><span data-en="Collaboration" data-id="Kolaborasi">Collaboration</span></a>
+                <a href="#profiles"><span data-en="Profiles" data-id="Profil">Profiles</span></a>
+                <a href="#writing"><span data-en="Writing" data-id="Tulisan">Writing</span></a>
+                <a href="#contact"><span data-en="Contact" data-id="Kontak">Contact</span></a>
+            </nav>
+            <a class="back-to-top" href="#top"><span data-en="Back to top" data-id="Kembali ke atas">Back to top</span> <span aria-hidden="true">↑</span></a>
+            <p class="footer-copyright">&copy; <span id="currentYear"></span> Galih Hermawan</p>
+        </div>
     </footer>
 
     <!-- Custom JavaScript -->
