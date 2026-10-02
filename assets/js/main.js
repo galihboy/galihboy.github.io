@@ -314,6 +314,7 @@ function setupMoreProjectsTicker() {
 		link.setAttribute('tabindex', '-1');
 	});
 	canonicalGroup.parentElement.appendChild(clone);
+	ticker.classList.add('is-animated');
 }
 
 // Initialize on page load

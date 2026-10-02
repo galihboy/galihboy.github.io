@@ -684,21 +684,25 @@ body {
 
 .more-projects-ticker {
 	width: 100%;
-	overflow: hidden;
-}
-
-.more-projects-ticker::-webkit-scrollbar {
-	display: none;
+	overflow-x: auto;
 }
 
 .more-projects-track {
 	display: flex;
 	width: max-content;
+	animation: none;
+}
+
+.more-projects-ticker.is-animated {
+	overflow: hidden;
+}
+
+.more-projects-ticker.is-animated .more-projects-track {
 	animation: more-projects-scroll 50s linear infinite;
 }
 
-.more-projects-ticker:hover .more-projects-track,
-.more-projects-ticker:focus-within .more-projects-track {
+.more-projects-ticker.is-animated:hover .more-projects-track,
+.more-projects-ticker.is-animated:focus-within .more-projects-track {
 	animation-play-state: paused;
 }
 
@@ -1286,6 +1290,18 @@ button:focus-visible {
 		-ms-overflow-style: none;
 	}
 
+	.more-projects-ticker.is-animated {
+		overflow-x: auto;
+	}
+
+	.more-projects-ticker.is-animated .more-projects-track {
+		animation: none;
+	}
+
+	.more-projects-ticker::-webkit-scrollbar {
+		display: none;
+	}
+
 	.more-projects-track {
 		width: auto;
 		animation: none;
@@ -1361,11 +1377,13 @@ button:focus-visible {
 
 	.more-projects-ticker {
 		overflow-x: auto;
-		scrollbar-width: none;
-		-ms-overflow-style: none;
 	}
 
-	.more-projects-track {
+	.more-projects-ticker.is-animated {
+		overflow-x: auto;
+	}
+
+	.more-projects-ticker.is-animated .more-projects-track {
 		width: auto;
 		animation: none;
 	}
