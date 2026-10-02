@@ -100,6 +100,8 @@ body {
 /* Main Container */
 .container {
 	max-width: 1200px;
+	width: 100%;
+	min-width: 0;
 	margin: 0 auto;
 	padding: 2rem 1.5rem;
 	flex: 1;
@@ -430,7 +432,11 @@ body {
 
 	.section-nav {
 		top: 0.5rem;
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 0.25rem;
 		margin-bottom: 2rem;
+		overflow-x: visible;
 	}
 
 	.section-nav + #projects {
@@ -438,8 +444,17 @@ body {
 	}
 
 	.section-nav a {
+		flex: initial;
 		padding: 0.4rem 0.65rem;
 		font-size: 0.78rem;
+		min-width: 0;
+		text-align: center;
+		white-space: normal;
+	}
+
+	.content-section.section-frame,
+	.section-group {
+		scroll-margin-top: 6rem;
 	}
 
 	.section-frame {
@@ -614,52 +629,6 @@ body {
 	font-size: 1.05rem;
 }
 
-.profile-actions {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	gap: 0.75rem;
-	margin-top: 1.5rem;
-}
-
-.button {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	gap: 0.5rem;
-	min-height: 2.75rem;
-	padding: 0.7rem 1.1rem;
-	border: 1px solid transparent;
-	border-radius: 0.5rem;
-	font-size: 0.9rem;
-	font-weight: 600;
-	text-decoration: none;
-	transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-}
-
-.button-primary {
-	background: var(--accent-primary);
-	color: var(--accent-contrast);
-}
-
-.button-primary:hover {
-	background: var(--accent-hover);
-	color: var(--accent-contrast);
-	transform: translateY(-1px);
-}
-
-.button-secondary {
-	background: var(--bg-card);
-	border-color: var(--border-color);
-	color: var(--text-primary);
-}
-
-.button-secondary:hover {
-	border-color: var(--accent-primary);
-	color: var(--accent-primary);
-	transform: translateY(-1px);
-}
-
 .content-section {
 	margin: 3.25rem 0;
 	scroll-margin-top: 1.5rem;
@@ -690,6 +659,128 @@ body {
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: 1rem;
+}
+
+.more-projects {
+	margin-top: 2.5rem;
+	padding-top: 1.5rem;
+	border-top: 1px solid var(--border-color);
+}
+
+.more-projects-heading {
+	margin-bottom: 1rem;
+}
+
+.more-projects-title {
+	margin-bottom: 0.25rem;
+	font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+	font-weight: 700;
+}
+
+.more-projects-heading p {
+	color: var(--text-secondary);
+	font-size: 0.88rem;
+}
+
+.more-projects-ticker {
+	width: 100%;
+	overflow: hidden;
+}
+
+.more-projects-ticker::-webkit-scrollbar {
+	display: none;
+}
+
+.more-projects-track {
+	display: flex;
+	width: max-content;
+	animation: more-projects-scroll 50s linear infinite;
+}
+
+.more-projects-ticker:hover .more-projects-track,
+.more-projects-ticker:focus-within .more-projects-track {
+	animation-play-state: paused;
+}
+
+.more-projects-group {
+	display: flex;
+	flex: 0 0 auto;
+	gap: 0.85rem;
+	padding-right: 0.85rem;
+}
+
+.more-project-card {
+	display: flex;
+	flex: 0 0 18rem;
+	min-height: 8.25rem;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 0.6rem;
+	padding: 1rem;
+	border: 1px solid var(--border-color);
+	border-radius: 0.65rem;
+	background: var(--bg-card);
+	color: var(--text-primary);
+	text-decoration: none;
+	transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.more-project-card:hover {
+	border-color: var(--accent-primary);
+	background: var(--bg-primary);
+	transform: translateY(-1px);
+}
+
+.more-project-card:focus-visible {
+	position: relative;
+	z-index: 1;
+}
+
+.more-project-card-top,
+.more-project-meta {
+	display: flex;
+	align-items: center;
+	gap: 0.55rem;
+}
+
+.more-project-card-top {
+	align-items: flex-start;
+}
+
+.more-project-card-top i,
+.more-project-meta i {
+	flex: 0 0 auto;
+	color: var(--accent-primary);
+}
+
+.more-project-card-top strong {
+	font-size: 0.95rem;
+	line-height: 1.35;
+}
+
+.more-project-description {
+	color: var(--text-secondary);
+	font-size: 0.82rem;
+	line-height: 1.45;
+}
+
+.more-project-meta {
+	justify-content: space-between;
+	color: var(--accent-primary);
+	font-size: 0.7rem;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+@keyframes more-projects-scroll {
+	from {
+		transform: translateX(0);
+	}
+
+	to {
+		transform: translateX(-50%);
+	}
 }
 
 .collaboration-grid {
@@ -987,7 +1078,7 @@ body {
 	display: block;
 	max-width: 100%;
 	width: auto;
-	height: 2rem;
+	height: 1.1em;
 }
 
 [data-theme="dark"] .email-address-image {
@@ -1183,6 +1274,37 @@ button:focus-visible {
 		grid-template-columns: 1fr;
 	}
 
+	.more-projects {
+		margin-top: 2rem;
+		padding-top: 1.25rem;
+	}
+
+	.more-projects-ticker {
+		overflow-x: auto;
+		scroll-snap-type: x proximity;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+	}
+
+	.more-projects-track {
+		width: auto;
+		animation: none;
+	}
+
+	.more-projects-group {
+		width: max-content;
+		padding-right: 0;
+	}
+
+	.more-projects-group-clone {
+		display: none;
+	}
+
+	.more-project-card {
+		flex-basis: 16.5rem;
+		scroll-snap-align: start;
+	}
+
 	.collaboration-card:last-child {
 		grid-column: auto;
 	}
@@ -1235,5 +1357,25 @@ button:focus-visible {
 		transition-duration: 0.01ms !important;
 		animation-duration: 0.01ms !important;
 		animation-iteration-count: 1 !important;
+	}
+
+	.more-projects-ticker {
+		overflow-x: auto;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+	}
+
+	.more-projects-track {
+		width: auto;
+		animation: none;
+	}
+
+	.more-projects-group {
+		width: max-content;
+		padding-right: 0;
+	}
+
+	.more-projects-group-clone {
+		display: none;
 	}
 }
