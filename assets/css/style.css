@@ -237,17 +237,31 @@ body {
 .chapter-marker {
 	position: absolute;
 	top: 0;
-	left: 1.5rem;
+	left: 50%;
 	display: grid;
 	place-items: center;
 	width: 2rem;
 	height: 2rem;
-	transform: translateY(-50%);
+	transform: translate(-50%, -50%);
 	border: 1px solid var(--border-color);
 	border-radius: 50%;
 	background: var(--bg-primary);
 	color: var(--accent-primary);
 	font-size: 0.9rem;
+}
+
+.section-reveal {
+	transition: opacity 420ms ease-out, transform 420ms ease-out;
+}
+
+.section-reveal.reveal-pending {
+	opacity: 0;
+	transform: translateY(14px);
+}
+
+.section-reveal.is-revealed {
+	opacity: 1;
+	transform: translateY(0);
 }
 
 /* Links Section */
@@ -461,10 +475,6 @@ body {
 		margin: 3rem 0;
 		padding: 1.75rem 1rem 1.25rem;
 		border-radius: 0.85rem;
-	}
-
-	.chapter-marker {
-		left: 0.75rem;
 	}
 
 	.collaboration-section {
@@ -851,8 +861,7 @@ body {
 	min-width: 0;
 }
 
-.project-card:hover,
-.collaboration-card:hover {
+.project-card:hover {
 	box-shadow: var(--shadow-md);
 }
 
@@ -945,10 +954,10 @@ body {
 
 .collaboration-section .chapter-marker {
 	position: static;
-	display: inline-grid;
-	width: auto;
-	height: auto;
-	margin-bottom: 0.7rem;
+	display: grid;
+	width: 1.1rem;
+	height: 1.1rem;
+	margin: 0 auto 0.7rem;
 	transform: none;
 	border: 0;
 	border-radius: 0;
@@ -956,11 +965,18 @@ body {
 	font-size: 0.95rem;
 }
 
+.collaboration-section .section-heading {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
 .collaboration-card {
 	padding: 1.25rem;
 	border: 1px solid var(--border-color);
 	border-radius: 0.65rem;
 	box-shadow: none;
+	transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .collaboration-card > i {
@@ -970,6 +986,7 @@ body {
 
 .collaboration-card:hover {
 	box-shadow: var(--shadow-sm);
+	transform: translateY(-2px);
 }
 
 .collaboration-research {
@@ -988,6 +1005,21 @@ body {
 	background: #ece3f7;
 	border-color: #d1bfe7;
 	color: #6b4fa0;
+}
+
+.collaboration-research:hover {
+	background: #d3e3f6;
+	border-color: #8eafd7;
+}
+
+.collaboration-consulting:hover {
+	background: #cee9e1;
+	border-color: #8fc6b7;
+}
+
+.collaboration-development:hover {
+	background: #e0d3f2;
+	border-color: #b69bd7;
 }
 
 .collaboration-card h3 {
@@ -1010,6 +1042,21 @@ body {
 	background: #2a2038;
 	border-color: #493761;
 	color: #b9a2d9;
+}
+
+[data-theme="dark"] .collaboration-research:hover {
+	background: #20344d;
+	border-color: #3d6188;
+}
+
+[data-theme="dark"] .collaboration-consulting:hover {
+	background: #20423b;
+	border-color: #3c7065;
+}
+
+[data-theme="dark"] .collaboration-development:hover {
+	background: #392b4d;
+	border-color: #654c83;
 }
 
 .contact-section {
@@ -1378,6 +1425,14 @@ button:focus-visible {
 		transition-duration: 0.01ms !important;
 		animation-duration: 0.01ms !important;
 		animation-iteration-count: 1 !important;
+	}
+
+	.section-reveal,
+	.section-reveal.reveal-pending,
+	.section-reveal.is-revealed {
+		opacity: 1;
+		transform: none;
+		transition: none;
 	}
 
 	.more-projects-ticker {

@@ -317,8 +317,53 @@ function setupMoreProjectsTicker() {
 	ticker.classList.add('is-animated');
 }
 
+// Reveal major chapters only after JavaScript enhancement confirms they can be shown.
+function setupSectionReveal() {
+	const sections = ['projects', 'collaboration', 'profiles', 'writing', 'contact']
+		.map(id => document.getElementById(id))
+		.filter(Boolean);
+
+	if (!sections.length) {
+		return;
+	}
+
+	const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	const isInitiallyVisible = element => {
+		const rect = element.getBoundingClientRect();
+		return rect.top < window.innerHeight && rect.bottom > 0;
+	};
+
+	if (reducedMotion) {
+		sections.forEach(section => section.classList.add('is-revealed'));
+		return;
+	}
+
+	const observer = new IntersectionObserver(entries => {
+		entries.forEach(entry => {
+			if (!entry.isIntersecting) {
+				return;
+			}
+
+			entry.target.classList.remove('reveal-pending');
+			entry.target.classList.add('is-revealed');
+			observer.unobserve(entry.target);
+		});
+	}, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+	sections.forEach(section => {
+		section.classList.add('section-reveal');
+		if (isInitiallyVisible(section)) {
+			section.classList.add('is-revealed');
+		} else {
+			section.classList.add('reveal-pending');
+			observer.observe(section);
+		}
+	});
+}
+
 // Initialize on page load
 setupMoreProjectsTicker();
+setupSectionReveal();
 updateThemeIcon(initTheme);
 updateLangText(initLang);
 updateLanguage(initLang);
