@@ -708,7 +708,7 @@ body {
 }
 
 .more-projects-ticker.is-animated .more-projects-track {
-	animation: more-projects-scroll 50s linear infinite;
+	animation: more-projects-scroll 64s linear infinite;
 }
 
 .more-projects-ticker.is-animated:hover .more-projects-track,
@@ -1343,7 +1343,7 @@ button:focus-visible {
 
 	.more-projects-ticker.is-animated .more-projects-track {
 		width: max-content;
-		animation: more-projects-scroll 60s linear infinite;
+		animation: more-projects-scroll 77s linear infinite;
 	}
 
 	.more-projects-ticker::-webkit-scrollbar {

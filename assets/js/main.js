@@ -159,6 +159,41 @@ const galleries = {
 				description: { en: 'A monitoring dashboard connected to Google Sheets for proposal submissions, supervision workload, topic trends, and submission status.', id: 'Dashboard monitoring yang terhubung ke Google Sheets untuk memantau proposal, beban bimbingan, tren topik, dan status pengumpulan.' }
 			}
 		]
+	},
+	'jadwal-if': {
+		title: { en: 'Jadwal Kuliah IF UNIKOM', id: 'Jadwal Kuliah IF UNIKOM' },
+		images: [
+			{
+				src: 'assets/images/projects/jadwal-if.webp', width: 1120, height: 644,
+				alt: { en: 'Jadwal Kuliah IF UNIKOM dashboard showing schedule statistics and quick-access tools', id: 'Dashboard Jadwal Kuliah IF UNIKOM yang menampilkan statistik jadwal dan menu akses cepat' },
+				title: { en: 'Dashboard', id: 'Dashboard' },
+				description: { en: 'Overview of course schedules, rooms, lecturers, courses, classes, and quick-access scheduling tools.', id: 'Ringkasan jadwal kuliah, ruang, dosen, mata kuliah, kelas, serta akses cepat ke berbagai fitur penjadwalan.' }
+			},
+			{
+				src: 'assets/images/projects/jadwal-if-angkatan.webp', width: 1145, height: 2052,
+				alt: { en: 'Class schedule view showing weekly Informatics course schedules', id: 'Tampilan jadwal angkatan yang menampilkan jadwal kuliah Informatika selama satu minggu' },
+				title: { en: 'Class Schedule', id: 'Jadwal Angkatan' },
+				description: { en: 'Weekly course schedule exploration by student cohort or class, including courses, lecturers, rooms, sections, and credit information.', id: 'Penelusuran jadwal mingguan berdasarkan angkatan atau kelas, lengkap dengan mata kuliah, dosen, ruang, section, dan informasi SKS.' }
+			},
+			{
+				src: 'assets/images/projects/jadwal-if-dosen.webp', width: 1145, height: 1360,
+				alt: { en: 'Lecturer schedule view showing assigned classes, courses, rooms, and teaching load', id: 'Tampilan jadwal dosen yang menampilkan kelas, mata kuliah, ruang, dan beban pengajaran' },
+				title: { en: 'Lecturer Schedule', id: 'Jadwal Dosen' },
+				description: { en: 'Lecturer-focused view summarizing teaching days, assigned classes, courses, rooms, and total teaching credits.', id: 'Tampilan khusus dosen yang merangkum hari mengajar, kelas yang diampu, mata kuliah, ruang, dan total SKS pengajaran.' }
+			},
+			{
+				src: 'assets/images/projects/jadwal-if-slot.webp', width: 1134, height: 975,
+				alt: { en: 'Available-time search comparing free time slots across selected classes', id: 'Pencarian waktu kosong yang membandingkan slot tersedia pada beberapa kelas' },
+				title: { en: 'Available Time Slots', id: 'Waktu Kosong' },
+				description: { en: 'Find shared available time slots across multiple classes for online meetings or replacement-session planning.', id: 'Pencarian slot waktu kosong bersama untuk beberapa kelas, termasuk kebutuhan pertemuan daring atau penjadwalan sesi pengganti.' }
+			},
+			{
+				src: 'assets/images/projects/jadwal-if-architecture.webp', width: 1774, height: 887,
+				alt: { en: 'System architecture diagram for Jadwal Kuliah IF UNIKOM', id: 'Diagram arsitektur sistem Jadwal Kuliah IF UNIKOM' },
+				title: { en: 'System Architecture', id: 'Arsitektur Sistem' },
+				description: { en: 'Production architecture using a Cloudflare Python Worker, Flask routes, Jinja templates, static assets, and a validated read-only SQLite snapshot.', id: 'Arsitektur produksi menggunakan Cloudflare Python Worker, Flask routes, Jinja templates, aset statis, dan snapshot SQLite read-only yang telah divalidasi.' }
+			}
+		]
 	}
 };
 
