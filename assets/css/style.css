@@ -797,8 +797,7 @@ body {
 	animation: more-projects-scroll 78.22s linear infinite;
 }
 
-.more-projects-ticker.is-animated:hover .more-projects-track,
-.more-projects-ticker.is-animated:focus-within .more-projects-track {
+.more-projects-ticker.is-animated:hover .more-projects-track {
 	animation-play-state: paused;
 }
 

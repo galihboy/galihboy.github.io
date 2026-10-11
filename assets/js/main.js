@@ -427,7 +427,7 @@ function setupMoreProjectsTicker() {
 	const track = canonicalGroup.parentElement;
 	const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 	ticker.addEventListener('focusin', event => {
-		if (reducedMotion.matches || !canonicalGroup.contains(event.target)) {
+		if (reducedMotion.matches || !canonicalGroup.contains(event.target) || !event.target.matches(':focus-visible')) {
 			return;
 		}
 
