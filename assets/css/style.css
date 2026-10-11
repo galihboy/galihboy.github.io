@@ -761,6 +761,16 @@ body {
 	align-items: flex-start;
 }
 
+.more-project-number {
+	flex: 0 0 1.25rem;
+	color: var(--text-secondary);
+	font-size: 0.78rem;
+	font-variant-numeric: tabular-nums;
+	font-weight: 600;
+	line-height: 1.35;
+	text-align: right;
+}
+
 .more-project-card-top i,
 .more-project-meta i {
 	flex: 0 0 auto;
