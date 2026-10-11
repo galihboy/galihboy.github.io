@@ -776,16 +776,28 @@ body {
 }
 
 .more-projects-ticker.is-animated {
-	overflow: hidden;
+	overflow: clip;
 	scroll-snap-type: none;
+}
+
+.more-projects-ticker.is-animated.is-keyboard-mode {
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+
+.more-projects-ticker.is-animated.is-keyboard-mode .more-projects-track {
+	animation: none;
+}
+
+.more-projects-ticker.is-animated.is-keyboard-mode .more-projects-group-clone {
+	display: none;
 }
 
 .more-projects-ticker.is-animated .more-projects-track {
 	animation: more-projects-scroll 78.22s linear infinite;
 }
 
-.more-projects-ticker.is-animated:hover .more-projects-track,
-.more-projects-ticker.is-animated:focus-within .more-projects-track {
+.more-projects-ticker.is-animated:hover .more-projects-track {
 	animation-play-state: paused;
 }
 
@@ -1421,7 +1433,7 @@ button:focus-visible {
 	}
 
 	.more-projects-ticker.is-animated {
-		overflow: hidden;
+		overflow: clip;
 		scroll-snap-type: none;
 	}
 
