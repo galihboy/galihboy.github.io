@@ -217,6 +217,18 @@ body {
 	color: var(--accent-primary);
 }
 
+.section-nav-links {
+	display: contents;
+}
+
+.section-nav-links[hidden] {
+	display: none;
+}
+
+.mobile-nav-toggle {
+	display: none;
+}
+
 .section-frame {
 	position: relative;
 	margin: 3.75rem 0;
@@ -451,6 +463,66 @@ body {
 		gap: 0.25rem;
 		margin-bottom: 2rem;
 		overflow-x: visible;
+	}
+
+	.section-nav-links {
+		display: contents;
+	}
+
+	.section-nav.mobile-menu-ready {
+		display: block;
+		min-height: 2.75rem;
+		margin: 0 auto 2rem;
+		padding: 0;
+		overflow: visible;
+		border: 0;
+		background: transparent;
+		box-shadow: none;
+	}
+
+	.section-nav.mobile-menu-ready .mobile-nav-toggle {
+		position: fixed;
+		top: 1rem;
+		left: 1rem;
+		z-index: 1001;
+		display: flex;
+		width: 2.5rem;
+		height: 2.5rem;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid var(--border-color);
+		border-radius: 50%;
+		background: var(--bg-card);
+		color: var(--text-primary);
+		box-shadow: var(--shadow-sm);
+		cursor: pointer;
+	}
+
+	.mobile-nav-toggle:focus-visible {
+		outline: 3px solid var(--accent-primary);
+		outline-offset: 3px;
+	}
+
+	.section-nav.mobile-menu-ready .section-nav-links:not([hidden]) {
+		position: fixed;
+		top: 4rem;
+		left: 1rem;
+		z-index: 1001;
+		display: flex;
+		width: 11.25rem;
+		flex-direction: column;
+		gap: 0.25rem;
+		padding: 0.5rem;
+		border: 1px solid var(--border-color);
+		border-radius: 0.65rem;
+		background: var(--bg-primary);
+		box-shadow: var(--shadow-md);
+	}
+
+	.section-nav.mobile-menu-ready .section-nav-links a {
+		padding: 0.55rem 0.65rem;
+		text-align: left;
+		white-space: nowrap;
 	}
 
 	.section-nav + #projects {
@@ -705,6 +777,7 @@ body {
 
 .more-projects-ticker.is-animated {
 	overflow: hidden;
+	scroll-snap-type: none;
 }
 
 .more-projects-ticker.is-animated .more-projects-track {
@@ -1349,6 +1422,7 @@ button:focus-visible {
 
 	.more-projects-ticker.is-animated {
 		overflow: hidden;
+		scroll-snap-type: none;
 	}
 
 	.more-projects-ticker.is-animated .more-projects-track {
@@ -1451,6 +1525,7 @@ button:focus-visible {
 
 	.more-projects-ticker.is-animated {
 		overflow-x: auto;
+		scroll-snap-type: x proximity;
 	}
 
 	.more-projects-ticker.is-animated .more-projects-track {

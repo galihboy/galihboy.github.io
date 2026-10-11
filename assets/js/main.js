@@ -67,6 +67,7 @@ function updateLanguage(lang) {
 	// Update HTML lang attribute
 	document.documentElement.setAttribute('lang', lang);
 	updateThemeIcon(document.documentElement.getAttribute('data-theme'));
+	updateMobileNavLabel();
 
 	if (document.getElementById('projectGallery')?.open) {
 		updateGalleryView();
@@ -333,6 +334,78 @@ document.getElementById('langToggle').addEventListener('click', () => {
 	updateLangText(newLang);
 });
 
+function updateMobileNavLabel() {
+	const toggle = document.querySelector('.mobile-nav-toggle');
+	if (!toggle) {
+		return;
+	}
+
+	const language = document.documentElement.getAttribute('lang') || 'en';
+	const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+	toggle.setAttribute('aria-label', language === 'id'
+		? (isOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi')
+		: (isOpen ? 'Close navigation menu' : 'Open navigation menu'));
+}
+
+function setupMobileNavigation() {
+	const nav = document.querySelector('.section-nav');
+	const toggle = nav?.querySelector('.mobile-nav-toggle');
+	const links = nav?.querySelector('.section-nav-links');
+	if (!nav || !toggle || !links) {
+		return;
+	}
+
+	const mobileViewport = window.matchMedia('(max-width: 768px)');
+	let isOpen = false;
+
+	const updateMenu = (open, returnFocus = false) => {
+		isOpen = mobileViewport.matches && open;
+		if (mobileViewport.matches) {
+			links.hidden = !isOpen;
+			links.inert = !isOpen;
+		} else {
+			links.hidden = false;
+			links.inert = false;
+		}
+		nav.classList.add('mobile-menu-ready');
+		toggle.setAttribute('aria-expanded', String(isOpen));
+		toggle.querySelector('i').className = isOpen ? 'fas fa-xmark' : 'fas fa-bars';
+		updateMobileNavLabel();
+		if (returnFocus) {
+			toggle.focus();
+		}
+	};
+
+	toggle.addEventListener('click', () => updateMenu(!isOpen));
+	links.addEventListener('click', event => {
+		if (event.target.closest('a')) {
+			updateMenu(false);
+		}
+	});
+	document.addEventListener('pointerdown', event => {
+		if (isOpen && !nav.contains(event.target)) {
+			updateMenu(false);
+		}
+	});
+	document.addEventListener('keydown', event => {
+		if (isOpen && event.key === 'Escape') {
+			event.preventDefault();
+			updateMenu(false, true);
+		}
+	});
+
+	const onViewportChange = () => {
+		const focusWasInLinks = links.contains(document.activeElement);
+		updateMenu(false, mobileViewport.matches && focusWasInLinks);
+	};
+	if (mobileViewport.addEventListener) {
+		mobileViewport.addEventListener('change', onViewportChange);
+	} else {
+		mobileViewport.addListener(onViewportChange);
+	}
+	updateMenu(false);
+}
+
 // Create one visual-only clone for the desktop ticker loop.
 function setupMoreProjectsTicker() {
 	const ticker = document.querySelector('.more-projects-ticker');
@@ -349,7 +422,27 @@ function setupMoreProjectsTicker() {
 		link.setAttribute('tabindex', '-1');
 	});
 	canonicalGroup.parentElement.appendChild(clone);
+	ticker.scrollLeft = 0;
 	ticker.classList.add('is-animated');
+	ticker.addEventListener('focusout', event => {
+		if (!ticker.contains(event.relatedTarget)) {
+			const scrollOffset = ticker.scrollLeft;
+			const track = canonicalGroup.parentElement;
+			const animation = track.getAnimations().find(item => item.animationName === 'more-projects-scroll');
+			const groupWidth = canonicalGroup.getBoundingClientRect().width;
+			const duration = animation?.effect.getTiming().duration;
+
+			if (scrollOffset && animation && groupWidth && typeof duration === 'number') {
+				animation.currentTime = Number(animation.currentTime || 0) + scrollOffset * duration / groupWidth;
+			}
+			ticker.scrollLeft = 0;
+		}
+	});
+	const resetTickerScroll = () => {
+		ticker.scrollLeft = 0;
+	};
+	window.addEventListener('pagehide', resetTickerScroll);
+	window.addEventListener('pageshow', resetTickerScroll);
 }
 
 // Reveal major chapters only after JavaScript enhancement confirms they can be shown.
@@ -397,6 +490,7 @@ function setupSectionReveal() {
 }
 
 // Initialize on page load
+setupMobileNavigation();
 setupMoreProjectsTicker();
 setupSectionReveal();
 updateThemeIcon(initTheme);

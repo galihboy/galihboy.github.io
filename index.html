@@ -41,7 +41,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css?v=20261011-2">
+    <link rel="stylesheet" href="assets/css/style.css?v=20261011-3">
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-212617993-2"></script>
@@ -95,11 +95,16 @@
         </section>
 
         <nav class="section-nav" aria-label="Page sections" data-aria-en="Page sections" data-aria-id="Bagian halaman">
-            <a href="#projects"><span data-en="Projects" data-id="Proyek">Projects</span></a>
-            <a href="#collaboration"><span data-en="Collaboration" data-id="Kolaborasi">Collaboration</span></a>
-            <a href="#profiles"><span data-en="Profiles" data-id="Profil">Profiles</span></a>
-            <a href="#writing"><span data-en="Writing" data-id="Tulisan">Writing</span></a>
-            <a href="#contact"><span data-en="Contact" data-id="Kontak">Contact</span></a>
+            <button class="mobile-nav-toggle" type="button" aria-expanded="false" aria-controls="section-nav-links" aria-label="Open navigation menu">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
+            <div class="section-nav-links" id="section-nav-links">
+                <a href="#projects"><span data-en="Projects" data-id="Proyek">Projects</span></a>
+                <a href="#collaboration"><span data-en="Collaboration" data-id="Kolaborasi">Collaboration</span></a>
+                <a href="#profiles"><span data-en="Profiles" data-id="Profil">Profiles</span></a>
+                <a href="#writing"><span data-en="Writing" data-id="Tulisan">Writing</span></a>
+                <a href="#contact"><span data-en="Contact" data-id="Kontak">Contact</span></a>
+            </div>
         </nav>
 
         <!-- Featured Projects -->
@@ -457,7 +462,7 @@
     </footer>
 
     <!-- Custom JavaScript -->
-    <script src="assets/js/main.js?v=20261007-1"></script>
+    <script src="assets/js/main.js?v=20261011-1"></script>
 </body>
 
 </html>
