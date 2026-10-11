@@ -424,18 +424,50 @@ function setupMoreProjectsTicker() {
 	canonicalGroup.parentElement.appendChild(clone);
 	ticker.scrollLeft = 0;
 	ticker.classList.add('is-animated');
+	const track = canonicalGroup.parentElement;
+	const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+	ticker.addEventListener('focusin', event => {
+		if (reducedMotion.matches || !canonicalGroup.contains(event.target)) {
+			return;
+		}
+
+		const card = event.target.closest('.more-project-card');
+		if (!card) {
+			return;
+		}
+
+		if (!ticker.classList.contains('is-keyboard-mode')) {
+			const animation = track.getAnimations().find(item => item.animationName === 'more-projects-scroll');
+			ticker.classList.add('is-keyboard-mode');
+			animation?.cancel();
+			ticker.scrollLeft = 0;
+		}
+		card.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+	});
 	ticker.addEventListener('focusout', event => {
 		if (!ticker.contains(event.relatedTarget)) {
-			const scrollOffset = ticker.scrollLeft;
-			const track = canonicalGroup.parentElement;
-			const animation = track.getAnimations().find(item => item.animationName === 'more-projects-scroll');
-			const groupWidth = canonicalGroup.getBoundingClientRect().width;
-			const duration = animation?.effect.getTiming().duration;
-
-			if (scrollOffset && animation && groupWidth && typeof duration === 'number') {
-				animation.currentTime = Number(animation.currentTime || 0) + scrollOffset * duration / groupWidth;
+			if (ticker.classList.contains('is-keyboard-mode')) {
+				const scrollOffset = ticker.scrollLeft;
+				const groupWidth = canonicalGroup.getBoundingClientRect().width;
+				ticker.scrollLeft = 0;
+				ticker.classList.remove('is-keyboard-mode');
+				const animation = track.getAnimations().find(item => item.animationName === 'more-projects-scroll');
+				const duration = animation?.effect.getTiming().duration;
+				if (groupWidth && typeof duration === 'number') {
+					const phase = Math.min(scrollOffset / groupWidth, 1);
+					track.style.animationDelay = `-${phase * duration}ms`;
+				}
 			}
-			ticker.scrollLeft = 0;
+		}
+	});
+	window.addEventListener('resize', () => {
+		if (!ticker.classList.contains('is-keyboard-mode')) {
+			return;
+		}
+
+		const focusedCard = document.activeElement.closest?.('.more-project-card');
+		if (focusedCard && canonicalGroup.contains(focusedCard)) {
+			focusedCard.scrollIntoView({ block: 'nearest', inline: 'nearest' });
 		}
 	});
 	const resetTickerScroll = () => {
