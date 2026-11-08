@@ -156,6 +156,39 @@ body {
 	font-weight: 500;
 }
 
+.training-availability {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.55rem;
+	max-width: 100%;
+	min-height: 2.75rem;
+	margin: 0.35rem 0 0.75rem;
+	padding: 0.45rem 0.8rem;
+	border: 1px solid var(--border-color);
+	border-radius: 2rem;
+	background: var(--bg-card);
+	color: var(--accent-primary);
+	font-size: 0.82rem;
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.training-availability:hover {
+	border-color: var(--accent-primary);
+	color: var(--accent-hover);
+}
+
+.availability-dot {
+	flex: 0 0 0.45rem;
+	height: 0.45rem;
+	border-radius: 50%;
+	background: #28764c;
+}
+
+[data-theme="dark"] .availability-dot {
+	background: #8fc9a4;
+}
+
 /* Inline Links in Profile */
 .inline-link {
 	color: inherit;
@@ -894,7 +927,7 @@ body {
 
 .collaboration-grid {
 	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: 1rem;
 }
 
@@ -1154,6 +1187,86 @@ body {
 	border-color: #654c83;
 }
 
+/* Training follows the service grid with a quieter, editorial treatment. */
+.collaboration-training {
+	background: var(--bg-secondary);
+	color: var(--accent-primary);
+	scroll-margin-top: 5rem;
+}
+
+.collaboration-training:hover {
+	border-color: var(--accent-primary);
+}
+
+.training-experience {
+	margin-top: 2rem;
+	padding-top: 1.5rem;
+	border-top: 1px solid var(--border-color);
+}
+
+.training-experience > h3 {
+	font-size: 1.2rem;
+}
+
+.training-program {
+	margin-top: 0.3rem;
+	color: var(--text-secondary);
+	font-size: 0.85rem;
+}
+
+.training-entry {
+	display: grid;
+	grid-template-columns: 10rem minmax(0, 1fr);
+	gap: 1.25rem;
+	padding: 1.5rem 0;
+	border-bottom: 1px solid var(--border-color);
+}
+
+.training-entry time {
+	color: var(--accent-primary);
+	font-size: 0.85rem;
+	font-weight: 600;
+}
+
+.training-entry-content {
+	min-width: 0;
+}
+
+.training-entry h4 {
+	font-size: 1rem;
+	line-height: 1.5;
+}
+
+.training-entry p {
+	margin-top: 0.5rem;
+	color: var(--text-secondary);
+	font-size: 0.92rem;
+}
+
+.training-entry .training-role {
+	color: var(--accent-primary);
+	font-size: 0.85rem;
+	font-weight: 600;
+}
+
+.training-entry .training-location {
+	margin-top: 0.2rem;
+	font-size: 0.85rem;
+}
+
+.training-cta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem 1rem;
+	padding-top: 1.25rem;
+}
+
+.training-cta p {
+	font-weight: 500;
+}
+
 .contact-section {
 	padding-top: 0.25rem;
 }
@@ -1400,17 +1513,14 @@ button:focus-visible {
 	.projects-grid {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
-
-	.collaboration-grid {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-	}
-
-	.collaboration-card:last-child {
-		grid-column: 1 / -1;
-	}
 }
 
 @media (max-width: 768px) {
+	.training-entry {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 0.5rem;
+	}
+
 	.content-section {
 		margin: 3rem 0;
 	}
